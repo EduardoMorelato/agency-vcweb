@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Montreal";
+    src: url(/fonts/Montreal\ Regular.ttf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Montreal";
+    src: url(/fonts/Montreal\ Medium.ttf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Montreal";
+    src: url(/fonts/Montreal\ MediumOblique.ttf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Montreal";
+    src: url(/fonts/Montreal\ Bold.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Montreal";
+    src: url(/fonts/Montreal\ BoldOblique.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Montreal";
+    src: url(/fonts/Montreal\ Oblique.ttf);
+    font-weight: 500;
+}
+
+body, button{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #030507;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+header{
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw 4vw;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+    gap: 20px;
+    border-radius: 40px;
+    padding: 8px 8px 8px 20px   ;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
