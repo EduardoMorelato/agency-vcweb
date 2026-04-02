@@ -4,65 +4,188 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Montreal";
-    src: url(/fonts/Montreal\ Regular.ttf);
-    font-weight: normal;
-}
-@font-face {
-    font-family: "Montreal";
-    src: url(/fonts/Montreal\ Medium.ttf);
-    font-weight: 500;
-}
-@font-face {
-    font-family: "Montreal";
-    src: url(/fonts/Montreal\ MediumOblique.ttf);
-    font-weight: 500;
-}
-@font-face {
-    font-family: "Montreal";
-    src: url(/fonts/Montreal\ Bold.ttf);
-    font-weight: 700;
-}
-@font-face {
-    font-family: "Montreal";
-    src: url(/fonts/Montreal\ BoldOblique.ttf);
-    font-weight: 700;
-}
-@font-face {
-    font-family: "Montreal";
-    src: url(/fonts/Montreal\ Oblique.ttf);
-    font-weight: 500;
+/* RESET DE LINKS GLOBAIS */
+a {
+    text-decoration: none;
+    color: inherit; 
+    cursor: pointer; 
 }
 
-body, button{
-    font-family: 'Poppins', sans-serif;
+/* IMPORTAÇÃO DA FONTE MONTREAL */
+
+@font-face {
+    font-family: "Montreal";
+    src: url('./fonts/Montreal Regular.ttf') format('truetype');
+    font-weight: 400; /* 400 é o padrão numérico para 'normal' */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Montreal";
+    src: url('./fonts/Montreal Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Montreal";
+    src: url('./fonts/Montreal Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Opcional: Adicionando as versões em Itálico (Oblique) */
+@font-face {
+    font-family: "Montreal";
+    src: url('./fonts/Montreal Oblique.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic; /* ou oblique */
 }
 
 body{
     background-color: #030507;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body, button{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
 }
 
 header{
     width: 100%;
-    background-color: blue;
+    background-color: transparent;
+    margin-bottom: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2vw 4vw;
+    padding: 1vw 1vw;
+    position: absolute;
+    z-index: 2;
 }
 
-button{
+header img {
+    max-width: 150px; 
+    height: auto;
+    opacity: 1 !important;
+}
+
+ul{
+    display: flex;
+    gap: 4vw;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+header button {
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    color: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
     gap: 20px;
     border-radius: 40px;
-    padding: 8px 8px 8px 20px   ;
+    padding: 10px 24px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+section{
+    padding: 0px 1vw;
+    width: 100%;    
+    z-index: 0;
+    min-height: 100vh;
+}
+
+h1{
+    font-family: "Montreal", sans-serif;
+}
+
+.sec1 {
+    position: relative;
+    min-height: 100vh; 
+    overflow: hidden; 
+    align-items: start;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    h1{
+        font-size: 4vw;
+        font-weight: 700;
+        line-height: 56px;
+        margin-bottom: 24px;
+        line-height: 5vh;
+    }
+    
+    .tituloCima{
+        p{  
+
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 26px;}             
+    }
+
+    button {       
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: none;
+        color: rgb(6, 6, 6);
+        gap: 14px;
+        border-radius: 40px;
+        padding: 6px 6px 6px 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+}
+
+
+.sec1 video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -2; 
+}
+
+.sec1::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 120%; 
+    background: linear-gradient(to top, #030507 0%, transparent 100%);
+    z-index: -1;
+}
+
+/* CONTAINER DAS FATIAS */
+.slices-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 20; /* Garante que fique acima do vídeo, dos textos e do filtro */
+    pointer-events: none; /* Impede que as fatias invisíveis bloqueiem os cliques nos botões */
+    overflow: hidden;
+}
+
+/* CADA FATIA INDIVIDUAL */
+.slice {
+    flex: 1; /* Faz as 8 fatias dividirem a tela em partes perfeitamente iguais */
+    height: 100%;
+    background-color: #030507; /* A cor exata de fundo do seu site */
+    transform: translateY(-100%); /* Esconde as fatias 100% para cima, fora da tela */
 }
