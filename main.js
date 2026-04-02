@@ -25,3 +25,4 @@ gsap.from(".sec2 .filosofia", {
     duration: 1.2,
     ease: "power3.out"
 });
+

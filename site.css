@@ -30,6 +30,7 @@ a {
     font-weight: 700;
     font-style: normal;
 }
+
 @font-face {
     font-family: "Montreal";
     src: url('./fonts/Montreal Oblique.ttf') format('truetype');
@@ -45,6 +46,7 @@ body{
 body, button{
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+    font-weight: 400;
 }
 
 header{
@@ -74,7 +76,6 @@ ul{
 }
 
 header button {
-    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,6 +94,13 @@ section{
     width: 100%;    
     z-index: 0;
     min-height: 100vh;
+}
+
+p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 24px;
 }
 
 h1, h2{
@@ -118,14 +126,12 @@ h1, h2{
     .tituloCima{
         p{ 
             font-size: 14px;
-            font-weight: 400;
             letter-spacing: 4px;
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 26px;}             
     }
 
     button {       
-        font-weight: 400;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -139,7 +145,6 @@ h1, h2{
         transition: all 0.3s ease;
     }
 }
-
 
 .sec1 video {
     position: absolute;
@@ -201,6 +206,71 @@ h1, h2{
 
         .char {
             opacity: 0;
+        }
+    }
+}
+
+
+.sec3{
+    .work-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+
+        .work-text{
+            max-width: 500px;
+
+            h2{
+                font-size: 4.5vw;
+                font-weight: 400;
+                line-height: 3.5vw;
+                word-spacing: -10px;
+
+                em{
+                    font-style: italic;
+                    font-weight: 600;
+                }
+            }
+
+            p{
+                margin-top: 16px;
+            }
+        }
+
+        .btn-see-all {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent;
+                border: 2px solid rgba(255, 255, 255, 0.9);
+                color: rgba(255, 255, 255, 1);
+                border-radius: 40px;
+                padding: 8px 46px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+        }   
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+
+        .project-cards {
+            position: relative;
+            overflow: hidden;
+
+            img {
+                border-radius: 40px;
+                width: 100%;
+                height: auto;
+                transition: transform 0.3s ease; 
+            }
+
+            &:hover img {
+                transform: scale(1.05); 
+            }
         }
     }
 }
