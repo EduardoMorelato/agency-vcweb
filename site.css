@@ -99,7 +99,6 @@ section{
 p{
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
     line-height: 24px;
 }
 
@@ -214,7 +213,7 @@ h1, h2{
 .sec3{
     position: relative;
     z-index: 10; /* Garante que passa por cima da sec2 */
-    background-color: #030507; /* Fundo sólido para cobrir a sec2 perfeitamente */
+    background-color: #f8f8f8; /* Fundo sólido para cobrir a sec2 perfeitamente */
     padding-top: 100px;
 
     .work-header{
@@ -231,6 +230,7 @@ h1, h2{
                 font-weight: 400;
                 line-height: 3.5vw;
                 word-spacing: -10px;
+                color: #030507;
 
                 em{
                     font-style: italic;
@@ -240,6 +240,7 @@ h1, h2{
 
             p{
                 margin-top: 16px;
+                color: #030507;
             }
         }
 
@@ -248,16 +249,16 @@ h1, h2{
                 justify-content: center;
                 align-items: center;
                 background-color: transparent;
-                border: 2px solid rgba(255, 255, 255, 0.9);
-                color: rgba(255, 255, 255, 1);
+                border: 1px solid #030507;
+                color: #030507;
                 border-radius: 40px;
                 padding: 8px 46px;
                 cursor: pointer;
                 transition: all 0.3s ease;
 
                 &:hover {
-                    background-color: rgba(255, 255, 255, 0.9);
-                    color: rgb(6, 6, 6);
+                    background-color: #030507;
+                    color: #f8f8f8;
             }
         }   
     }
@@ -301,8 +302,8 @@ h1, h2{
                 justify-content: center;
                 align-items: center;
                 background-color: transparent;
-                border: 2px solid rgba(255, 255, 255, 0.9);
-                color: rgba(255, 255, 255, 1);
+                border: 1px solid #030507;
+                color: #030507;
                 gap: 20px;
                 border-radius: 40px;
                 padding: 4px 8px 4px 40px;
@@ -310,12 +311,50 @@ h1, h2{
                 transition: all 0.3s ease;
 
                 &:hover {
-                    background-color: rgba(255, 255, 255, 0.9);
-                    color: rgb(6, 6, 6);
+                    background-color: #030507;
+                    color: #f8f8f8;
                     }
                 }
-
     .container{
         padding-bottom: 100px;
+    }
+}
+
+.sec4{
+        .card-master{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 60px ;
+
+        .direita{
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+
+            img{
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-bottom: 16px;
+            }
+
+            h3{
+                font-size: 1.5vw;
+                margin-bottom: 8px;
+                color: #030507;
+            }
+
+            p{
+                color: #030507;
+                font-size: 14px;
+            }
+        }
     }
 }
