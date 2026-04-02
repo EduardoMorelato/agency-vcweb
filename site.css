@@ -4,19 +4,16 @@
     box-sizing: border-box;
 }
 
-/* RESET DE LINKS GLOBAIS */
 a {
     text-decoration: none;
     color: inherit; 
     cursor: pointer; 
 }
 
-/* IMPORTAÇÃO DA FONTE MONTREAL */
-
 @font-face {
     font-family: "Montreal";
     src: url('./fonts/Montreal Regular.ttf') format('truetype');
-    font-weight: 400; /* 400 é o padrão numérico para 'normal' */
+    font-weight: 400; 
     font-style: normal;
 }
 
@@ -33,13 +30,11 @@ a {
     font-weight: 700;
     font-style: normal;
 }
-
-/* Opcional: Adicionando as versões em Itálico (Oblique) */
 @font-face {
     font-family: "Montreal";
     src: url('./fonts/Montreal Oblique.ttf') format('truetype');
     font-weight: 400;
-    font-style: italic; /* ou oblique */
+    font-style: italic; 
 }
 
 body{
@@ -116,9 +111,8 @@ h1, h2{
     h1{
         font-size: 4vw;
         font-weight: 700;
-        line-height: 56px;
         margin-bottom: 24px;
-        line-height: 5vh;
+        line-height: 2.6vw;
     }
     
     .tituloCima{
@@ -202,11 +196,11 @@ h1, h2{
     
     h2 {
         font-size: 4vw;
-        font-weight: 700;
-        line-height: 1.2; /* Simplificado para evitar conflito com vh */
+        font-weight: normal;
+        line-height: 4.3vw; 
 
         .char {
-            opacity: 0; /* Começa totalmente invisível */
+            opacity: 0;
         }
     }
 }
