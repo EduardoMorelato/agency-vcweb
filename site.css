@@ -847,3 +847,108 @@ h2{
         }
     }
 }
+
+/* ====================== */
+/* SEC7 - ANYTHING TO ADD */
+/* =======================*/
+
+.sec7 {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 100px auto; 
+    height: 80vh; 
+    min-height: 60vh;
+    border-radius: 40px; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center; 
+    padding: 1vw 5vw; 
+    margin: 0px 1vw 120px 1vw;
+
+    /* O VÍDEO DE FUNDO */
+    .bglegal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Preenche todo o cartão sem esmagar a imagem */
+        z-index: 0;
+    }
+
+    /* UMA PELÍCULA ESCURA SOBRE O VÍDEO PARA LER MELHOR (Opcional) */
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+        z-index: 1;
+    }
+
+    /* CAMADA DE CONTEÚDO (Fica por cima do vídeo) */
+    .content-layer {
+        position: relative;
+        z-index: 2; 
+        width: 100%;
+        display: flex;
+        justify-content: flex-start; /* Joga o card menor para a esquerda */
+    }
+
+    /* O CARD CINZENTO (CTA) */
+    .cta-card {
+        background-color: rgba(65, 65, 65, 0.1); 
+        backdrop-filter: blur(12px); /* Efeito de vidro premium da Apple */
+        border: #f8f8f834 1px solid; 
+        padding: 60px 50px;
+        border-radius: 30px;
+        width: 100%;
+        max-width: 35vw;
+        display: flex;
+        flex-direction: column;
+        gap: 60px; /* Espaço entre o ícone, o texto e o botão */
+
+        .cta-icon {
+            margin-bottom: -20px;
+            width: 8vw;
+            filter: invert(0); 
+        }
+
+        h2 {
+            font-family: 'Montreal', sans-serif;
+            font-weight: 400;
+            color: #f8f8f8;
+            letter-spacing: -1px;
+        }
+
+        .link-lets-talk {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #f8f8f8;
+            letter-spacing: 1.5px;
+            display: inline-flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+
+            /* Criando a setinha automaticamente via CSS */
+            &::after {
+                content: '→';
+                margin-left: 10px;
+                font-size: 18px;
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            &:hover {
+                opacity: 0.7;
+                
+                /* Animação da setinha indo para a direita no hover */
+                &::after {
+                    transform: translateX(4px); 
+                }
+            }
+        }
+    }
+}
