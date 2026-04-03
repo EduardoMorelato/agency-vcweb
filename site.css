@@ -230,7 +230,7 @@ h2{
 .slice {
     flex: 1; 
     height: 100%;
-    background-color: #ffffff;
+    background-color: #030507;
     transform: translateY(-100%); 
     border-radius: 0px 0px 40px 0px;
 }
@@ -551,19 +551,23 @@ h2{
 .analysis-form {
     display: flex;
     width: 90%;
-    background-color: rgba(0, 0, 0, 0.02); /* Fundo de vidro ultra-sutil */
+    background-color: rgba(0, 0, 0, 0.02); 
     border: 1px solid #030507;
-    border-radius: 100px; /* Arredondamento máximo para criar o formato de pílula */
-    padding: 8px 10px 8px 40px; /* Muito espaço na esquerda, botão cravado na direita */
+    border-radius: 100px; 
+    padding: 8px 10px 8px 40px; 
     align-items: center;
-    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    transform: scale(1);
+    transition: 
+        border-color 0.4s ease, 
+        box-shadow 0.4s ease, 
+        background-color 0.8s ease,
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Acende a borda do formulário inteiro quando o utilizador clica num input */
 .analysis-form:focus-within {
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-    scale: calc(1.005);
+    background-color: rgba(153, 151, 151, 0.2);
+    transform: scale(1.009); 
 }
 
 .input-group {
