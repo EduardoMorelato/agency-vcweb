@@ -47,10 +47,6 @@ body{
 /* SELEÇÃO DE TEXTO PREMIUM (INVERTIDA)      */
 /* ========================================= */
 
-/* ========================================= */
-/* SELEÇÃO DE TEXTO PREMIUM (HÍBRIDA)        */
-/* ========================================= */
-
 /* 1. REGRA GLOBAL: Para as áreas escuras do site */
 ::selection {
     background-color: rgba(255, 255, 255, 0.9); 
@@ -141,6 +137,7 @@ p{
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     line-height: 24px;
+    font-weight: 400;
 }
 
 h1, h2{
@@ -151,6 +148,43 @@ h2{
     font-size: 3.5vw;
     font-weight: 400;
     line-height: 3.5vw;
+}
+
+/* ========================================= */
+/* SELEÇÃO DE TEXTO PREMIUM (HÍBRIDA)        */
+/* ========================================= */
+
+/* 1. REGRA GLOBAL: Para as áreas escuras do site */
+::selection {
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: #030507; 
+}
+
+::-moz-selection {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #030507;
+}
+
+/* 2. REGRA CONTEXTUAL: Para as áreas claras (como a Sec5) */
+.sec5 ::selection {
+    background-color: #030507; /* O fundo da seleção fica preto */
+    color: #f8f8f8; /* O texto fica clarinho */
+}
+
+.sec5 ::-moz-selection {
+    background-color: #030507;
+    color: #f8f8f8;
+}
+
+/* (Opcional) Aplica também para o texto digitado dentro do formulário */
+.analysis-form input::selection {
+    background-color: #030507;
+    color: #f8f8f8;
+}
+
+.analysis-form input::-moz-selection {
+    background-color: #030507;
+    color: #f8f8f8;
 }
 
 .sec1 {
@@ -495,8 +529,6 @@ h2{
     font-weight: 600;
 }
 
-/* SEC5 */
-
 /* ========================================= */
 /* SEC5 - LEAD CAPTURE FORM                  */
 /* ========================================= */
@@ -517,21 +549,19 @@ h2{
 }
 
 .lead-capture {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 50px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 50px;
+    em {
+        font-style: italic;
+        font-weight: 600;
+    }
 }
 
-.lead-capture em {
-    font-style: italic;
-    font-weight: 600;
-}
-
-/* ESCONDER LABELS VISUALMENTE (Mantém acessibilidade para leitores de tela) */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -564,9 +594,9 @@ h2{
         transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Acende a borda do formulário inteiro quando o utilizador clica num input */
 .analysis-form:focus-within {
-    background-color: rgba(153, 151, 151, 0.2);
+    border-color: #030507;
+    background-color: rgba(153, 151, 151, 0.1);
     transform: scale(1.009); 
 }
 
@@ -578,8 +608,8 @@ h2{
 /* Linha separadora elegante entre o URL e o Email */
 .input-group:first-of-type {
     border-right: 1px solid  #03050780;
-    margin-right: 30px;
-    padding-right: 30px;
+    margin-right: 40px;
+    padding-right: 40px;
 }
 
 /* LIMPEZA DOS INPUTS (Removendo o visual padrão feio dos navegadores) */
@@ -615,8 +645,6 @@ h2{
 
 .btn-submit-circle img {
     width: 24px;
-    /* Se a sua seta original for branca, isto inverte a cor dela para preto
-       para criar contraste com o fundo branco do botão. */
     filter: invert(0); 
     transition: transform 0.4s ease;
 }
@@ -625,18 +653,9 @@ h2{
     transform: scale(1.05);
 }
 
-/* Um micro-detalhe de elite: a seta desloca-se ligeiramente para a frente no hover */
 .btn-submit-circle:hover img {
-    transform: translateX(4px);
+    transform: translateX(2px);
 }
-
-/* ========================================= */
-/* DIVISOR DE BOLAS (SCALLOPED EDGE CSS PURO)*/
-/* ========================================= */
-
-/* ========================================= */
-/* DIVISOR DE BOLAS ASSIMÉTRICO (CSS PURO)   */
-/* ========================================= */
 
 /* ========================================= */
 /* DIVISOR DE 7 BOLAS (INVERTIDO E PREMIUM)  */
@@ -668,15 +687,163 @@ h2{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 10;
-    pointer-events: none; /* Garante que os cliques na tela passem direto por este efeito */
+    pointer-events: none; 
 }
 
+/* ========================================= */
+/* SEC6 - FAQ PREMIUM (OTIMIZADO COM LUZ)    */
+/* ========================================= */
 
-/* SEC6 */
 .sec6 {
     position: relative;
-    min-height: 100vh;
+    padding: 120px 1vw;
+    background-color: #030507; 
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding-bottom: 120px;
+
+    .faq-container {
+        width: 100%;
+        max-width: 100%; 
+        display: flex;
+        flex-direction: column;
+    }
+
+    .faq-top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end; 
+        margin-bottom: 80px;
+    }
+
+    .faq-header {
+        h2{
+            font-weight: 500;
+        }
+        p {
+            font-size: 1.5vw;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        em {
+            font-style: italic;
+            font-weight: 600;
+            color: #f8f8f8;
+        }
+    }
+
+    .btn-see-all {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            border: 1px solid #f8f8f8;
+            color: #f8f8f8;
+            border-radius: 40px;
+            padding: 8px 46px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #f8f8f8d5;
+                color: #030507;
+        }
+    }   
+
+    .faq-accordion {
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.2); 
+    }
+
+    .faq-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        
+        transition: background-color 0.4s ease, transform 0.4s ease;
+
+        &.is-open {
+            background-color: #f8f8f8d5;  
+            transform: scale(1.02);
+            color: #030507;
+
+            span { color: #030507;
+            }
+                
+            .faq-icon { transform: rotate(-90deg );
+                        filter: invert(1);}
+        }
+
+        /* O seu código perfeito aqui: */
+        &:not(.is-open):hover{
+            background-color: #f8f8f8aa; 
+            .faq-question span { color: #030507; }
+            transform: scale(1.02);
+            
+            .faq-icon {
+                transform: rotate(90deg); 
+                filter: invert(0); 
+            }
+
+            .faq-answer p { color: #030507; }
+        }
+    }
+        
+    .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        outline: none;
+        transition: background-image 0.4s ease; /* Transição suave do hover */
+        
+        span {
+            font-family: 'Montreal', sans-serif;
+            font-size: 2vw; 
+            font-weight: 400;
+            color: #f8f8f8;
+            transition: font-weight 0.3s ease, color 0.3s ease;
+        }
+        &:hover{
+            .faq-icon {
+                transform: rotate(-90deg); 
+            }
+        }
+    }
+
+    .faq-icon-wrapper {
+        position: absolute; 
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .faq-icon {
+        width: 18px;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+    }
+
+    .faq-answer {
+        height: 0;
+        overflow: hidden;
+
+        p {
+            font-size: 1.1vw;
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            text-align: center; 
+            max-width: 55%;
+            margin: 0 auto;
+            padding: 0px 20px 50px 20px; 
+            transition: color 0.3s ease;
+        }
+    }
 }
