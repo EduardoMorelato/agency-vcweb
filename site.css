@@ -43,6 +43,47 @@ body{
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* ========================================= */
+/* SELEÇÃO DE TEXTO PREMIUM (INVERTIDA)      */
+/* ========================================= */
+
+/* ========================================= */
+/* SELEÇÃO DE TEXTO PREMIUM (HÍBRIDA)        */
+/* ========================================= */
+
+/* 1. REGRA GLOBAL: Para as áreas escuras do site */
+::selection {
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: #030507; 
+}
+
+::-moz-selection {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #030507;
+}
+
+/* 2. REGRA CONTEXTUAL: Para as áreas claras (como a Sec5) */
+.sec5 ::selection {
+    background-color: #030507; /* O fundo da seleção fica preto */
+    color: #f8f8f8; /* O texto fica clarinho */
+}
+
+.sec5 ::-moz-selection {
+    background-color: #030507;
+    color: #f8f8f8;
+}
+
+/* (Opcional) Aplica também para o texto digitado dentro do formulário */
+.analysis-form input::selection {
+    background-color: #030507;
+    color: #f8f8f8;
+}
+
+.analysis-form input::-moz-selection {
+    background-color: #030507;
+    color: #f8f8f8;
+}
+
 body, button{
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -104,6 +145,12 @@ p{
 
 h1, h2{
     font-family: "Montreal", sans-serif;
+}
+
+h2{
+    font-size: 3.5vw;
+    font-weight: 400;
+    line-height: 3.5vw;
 }
 
 .sec1 {
@@ -215,6 +262,7 @@ h1, h2{
     z-index: 10; /* Garante que passa por cima da sec2 */
     background-color: #f8f8f8; /* Fundo sólido para cobrir a sec2 perfeitamente */
     padding-top: 100px;
+    padding-bottom: 100px;
 
     .work-header{
         display: flex;
@@ -297,13 +345,19 @@ h1, h2{
                 }
         }
 
+        .botao{
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
         button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: transparent;
+                background-color: #030507;
                 border: 1px solid #030507;
-                color: #030507;
+                color: #f8f8f8;
                 gap: 20px;
                 border-radius: 40px;
                 padding: 4px 8px 4px 40px;
@@ -311,8 +365,9 @@ h1, h2{
                 transition: all 0.3s ease;
 
                 &:hover {
-                    background-color: #030507;
-                    color: #f8f8f8;
+                    background-color: #f8f8f8;
+                    color: #030507;
+                    scale: calc(1.04);
                     }
                 }
     .container{
@@ -320,41 +375,255 @@ h1, h2{
     }
 }
 
-.sec4{
-        .card-master{
+/* ========================================= */
+/* SEC4 - WHAT CLIENTS SAY (MARQUEE)         */
+/* ========================================= */
+
+.sec4 {
+    position: relative;
+    padding: 100px 0 200px 0;
+    overflow: hidden;
+    background-color: #f8f8f8;
+
+    .esquerda {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+
+        h2 {
+            font-weight: 400;
+            color: #f8f8f8;
+        }
+
+        button {
+            font-family: "Montreal", sans-serif;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
             align-items: center;
-            padding: 60px ;
+            background-color: transparent;
+            border: 1px solid #f8f8f8;
+            color: #f8f8f8;
+            gap: 20px;
+            border-radius: 40px;
+            padding: 12px 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
 
-        .direita{
-            background-color: #f8f8f8;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-            display: flex;
-            flex-direction: row;
-
-            img{
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
-                margin-bottom: 16px;
-            }
-
-            h3{
-                font-size: 1.5vw;
-                margin-bottom: 8px;
+            &:hover {
+                background-color: #f8f8f8;
                 color: #030507;
-            }
-
-            p{
-                color: #030507;
-                font-size: 14px;
-            }
+                scale: calc(1.08);
+             }
         }
     }
+}
+
+.card-master {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    height: 90vh; 
+    gap: 6vw; 
+    margin: 0 1.5vw;
+    background-color: #030507; 
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px; 
+    padding: 60px; 
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.15),
+        0 10px 20px rgba(0, 0, 0, 0.1),
+        inset 3px 3px 12px rgba(255, 255, 255, 0.2),
+}
+
+.sec4 .esquerda em {
+    font-style: italic;
+    font-weight: 600;
+}
+
+.sec4 .direita {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    gap: 24px;
+    overflow: hidden; 
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+/* AS DUAS ESTEIRAS */
+.col-marquee {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 50%; 
+    will-change: transform; /* Avisa a placa de vídeo para focar na animação que faremos no JS */
+}
+
+/* Intercala a segunda coluna, começando mais de cima */
+.col-2 {
+    transform: translateY(-20%); 
+}
+
+/* DESIGN INDIVIDUAL DO CARD */
+.sec4 .card {
+    background-color: rgba(255, 255, 255, 0); 
+    border: 1px solid rgb(38, 203, 186); 
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sec4 .card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2vw; /* Ajusta o texto dinamicamente com o monitor */
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sec4 .card p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.sec4 .card b {
+    color: rgb(38, 203, 186);
+    font-weight: 600;
+}
+
+/* SEC5 */
+
+/* ========================================= */
+/* SEC5 - LEAD CAPTURE FORM                  */
+/* ========================================= */
+
+.sec5 {
+    position: relative;
+    padding: 140px 0;
+    background-color: #f8f8f8; /* Garante que voltamos ao dark mode após a sec4 branca */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2{
+        color: #030507;
+        font-weight: 400;
+    }
+}
+
+.lead-capture {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
+}
+
+.lead-capture em {
+    font-style: italic;
+    font-weight: 600;
+}
+
+/* ESCONDER LABELS VISUALMENTE (Mantém acessibilidade para leitores de tela) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ========================================= */
+/* A MÁGICA DO FORMULÁRIO EM PÍLULA          */
+/* ========================================= */
+
+.analysis-form {
+    display: flex;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.02); /* Fundo de vidro ultra-sutil */
+    border: 1px solid #030507;
+    border-radius: 100px; /* Arredondamento máximo para criar o formato de pílula */
+    padding: 8px 10px 8px 40px; /* Muito espaço na esquerda, botão cravado na direita */
+    align-items: center;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Acende a borda do formulário inteiro quando o utilizador clica num input */
+.analysis-form:focus-within {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    scale: calc(1.005);
+}
+
+.input-group {
+    flex: 1; /* Faz os inputs dividirem o espaço igualmente */
+    display: flex;
+}
+
+/* Linha separadora elegante entre o URL e o Email */
+.input-group:first-of-type {
+    border-right: 1px solid  #03050780;
+    margin-right: 30px;
+    padding-right: 30px;
+}
+
+/* LIMPEZA DOS INPUTS (Removendo o visual padrão feio dos navegadores) */
+.analysis-form input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #030507;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    outline: none; /* Remove a borda azul padrão do Chrome */
+    caret-color: #030507 !important; /* Cor do cursor de texto */
+}
+
+.analysis-form input::placeholder {
+    color: #03050780;
+}
+
+/* ========================================= */
+/* BOTÃO CIRCULAR PREMIUM                    */
+/* ========================================= */
+
+.btn-submit-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #030507;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0; /* Impede que o botão seja espremido se a tela encolher */
+}
+
+.btn-submit-circle img {
+    width: 24px;
+    /* Se a sua seta original for branca, isto inverte a cor dela para preto
+       para criar contraste com o fundo branco do botão. */
+    filter: invert(0); 
+    transition: transform 0.4s ease;
+}
+
+.btn-submit-circle:hover {
+    transform: scale(1.05);
+}
+
+/* Um micro-detalhe de elite: a seta desloca-se ligeiramente para a frente no hover */
+.btn-submit-circle:hover img {
+    transform: translateX(4px);
 }
