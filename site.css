@@ -232,6 +232,7 @@ h2{
     height: 100%;
     background-color: #ffffff;
     transform: translateY(-100%); 
+    border-radius: 0px 0px 40px 0px;
 }
 
 /* SEC2 */
@@ -381,7 +382,7 @@ h2{
 
 .sec4 {
     position: relative;
-    padding: 100px 0 200px 0;
+    padding: 100px 0 50px 0;
     overflow: hidden;
     background-color: #f8f8f8;
 
@@ -502,11 +503,12 @@ h2{
 
 .sec5 {
     position: relative;
-    padding: 140px 0;
-    background-color: #f8f8f8; /* Garante que voltamos ao dark mode após a sec4 branca */
+    background-color: #f8f8f8;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: calc(100px + 12vw); /* Dá um respiro extra para o divisor de bolas gigante */
+    padding-top: calc(10px + 12vw); 
 
     h2{
         color: #030507;
@@ -593,10 +595,6 @@ h2{
     color: #03050780;
 }
 
-/* ========================================= */
-/* BOTÃO CIRCULAR PREMIUM                    */
-/* ========================================= */
-
 .btn-submit-circle {
     width: 60px;
     height: 60px;
@@ -626,4 +624,55 @@ h2{
 /* Um micro-detalhe de elite: a seta desloca-se ligeiramente para a frente no hover */
 .btn-submit-circle:hover img {
     transform: translateX(4px);
+}
+
+/* ========================================= */
+/* DIVISOR DE BOLAS (SCALLOPED EDGE CSS PURO)*/
+/* ========================================= */
+
+/* ========================================= */
+/* DIVISOR DE BOLAS ASSIMÉTRICO (CSS PURO)   */
+/* ========================================= */
+
+/* ========================================= */
+/* DIVISOR DE 7 BOLAS (INVERTIDO E PREMIUM)  */
+/* ========================================= */
+
+.wave-dividr {
+    position: absolute;
+    bottom: 0; /* A MÁGICA 1: Agora o divisor fica cravado no chão da sec5 */
+    left: 0;
+    width: 100%;
+    height: 12vw; /* Altura máxima baseada na bola gigante das laterais */
+
+    /* A MÁGICA 2: 
+       Desenhamos as bolas com a cor PRETA (#030507) 
+       e ancoramos elas no bottom (100%), fazendo com que cresçam para cima! */
+    background-image:
+        /* Lateral Esquerda (Bolas maiores) */
+        radial-gradient(circle at 1% 130%, #030507 14vw, transparent calc(14vw + 1px)),
+        radial-gradient(circle at 19% 160%, #030507 14vw, transparent calc(14vw + 1px)),
+        radial-gradient(circle at 35% 140%, #030507 10vw, transparent calc(10vw + 1px)),
+
+        radial-gradient(circle at 50% 170%, #030507 14vw, transparent calc(14vw + 1px)),
+        
+        /* Lateral Direita (Voltando a crescer) */
+        radial-gradient(circle at 66% 150%, #030507 15vw, transparent calc(15vw + 1px)),
+        radial-gradient(circle at 84% 140%, #030507 12vw, transparent calc(12vw + 1px)),
+        radial-gradient(circle at 102% 120%, #030507 14vw, transparent calc(14vw + 1px));
+        
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 10;
+    pointer-events: none; /* Garante que os cliques na tela passem direto por este efeito */
+}
+
+
+/* SEC6 */
+.sec6 {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
