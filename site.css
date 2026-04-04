@@ -1032,5 +1032,36 @@ h2{
 }
 
 .sec9{
-    margin: ;
+    margin: 0;
+    position: relative;
+    background-color: #030507;
+    display: flex;
+    justify-content: space-between; 
+    padding: 120px 1vw 1vh 1vw; 
+    max-width: 100%;
+    min-height: 22vh;
+
+    p{
+        font-size: 14px;
+        letter-spacing: 1px;
+
+    }
+
+    .footer-social{
+        margin: 10x;
+    }
+
+    img{
+        max-width: 30px;
+    }
+
+    .facebook{
+        max-height: 30px;
+    }
+    
+    .linkdlin{
+        max-width: 25px;
+        padding-bottom: 5px;
+    }
+    
 }
