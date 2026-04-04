@@ -15,24 +15,36 @@ gsap.to(".slice", {
     ease: "none"
 });
 
-// REVELANDO A FILOSOFIA DEPOIS DA TELA PRETA
-gsap.from(".sec2 .filosofia", {
-    scrollTrigger: {
-        trigger: ".sec2",
-        start: "top 70%",
-    },
-    y: 50,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power3.out"
+// ======================================================
+// SCROLLYTELLING SEC2: TEXTO REVELADO NO CENTRO DA TELA
+// ======================================================
+
+const split = new SplitText(".filosofia h2", {
+    type: "chars",
+    mask: "chars"
 });
 
+// MOTOR 1: O PINO (Segura a tela no lugar quando bater no topo)
 ScrollTrigger.create({
     trigger: ".sec2",
-    start: "top top", // Ativa exatamente quando o topo da Sec2 bate no topo da janela
-    pin: true,        // Congela a Sec2 no lugar (faz o efeito de Sticky Top)
-    pinSpacing: false, // A ENGENHARIA DE ELITE: Isto diz ao navegador para NÃO empurrar a Sec3 para baixo. Assim, a Sec3 sobe por cima da Sec2!
-    anticipatePin: 1
+    start: "top top", 
+    end: "+=150%",
+    pin: true,
+    pinSpacing: true
+});
+
+// MOTOR 2: A ANIMAÇÃO (Gatilho no centro da tela)
+gsap.from(split.chars, {
+    scrollTrigger: {
+        trigger: ".filosofia h2", // A MÁGICA 1: O gatilho agora é o próprio texto
+        start: "center center",   // A MÁGICA 2: Começa exatamente quando o texto bate no meio do ecrã!
+        end: "+=150%",            // Termina a animação junto com o pino da tela
+        scrub: 1
+    },
+    y: 80,            // Reduzi um pouco o 'y' (de 100 para 80) para o movimento ser mais elegante
+    opacity: 0,
+    stagger: 0.1,
+    ease: "none"
 });
 
 
@@ -82,21 +94,3 @@ if (faqItems.length > 0) {
         });
     });
 }
-
-
-// SEPARANDO LETRA POR LETRA SEC2
-function animarTitulo(){
-    const split = SplitText.create(".filosofia h2", {
-    type: "chars",
-    mask: "chars"
-});
-
-gsap.from(split.chars, {
-    y: "100",
-    opacity: 0,
-    duration: 0.2,
-    stagger: .06,
-    delay: .5,
-})}
-
-// console.log(split)

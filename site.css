@@ -283,28 +283,32 @@ h2{
 .slice {
     flex: 1; 
     height: 100%;
-    background-color: #030507;
+    background-color: #797a7b;
     transform: translateY(-100%); 
     border-radius: 0px 0px 6vh 0px;
     z-index: 2;
 }
 
 /* SEC2 */
-
 .sec2 {
     background-color: #030507;
     position: relative;
-    min-height: 100vh; 
+    width: 100%;
+    min-height: 100vh;
     overflow: hidden;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
 
     h2 {
+        color: #f8f8f8;
         font-size: 4vw;
-        font-weight: normal;
-        line-height: 4.3vw;
+        font-weight: 300;
+        line-height: 4vw;
+        text-align: center; /* 2. O AJUSTE: Centraliza as letras dentro da própria frase */
+        max-width: 100%;
+        margin: 0;
     }
 }
 
@@ -697,7 +701,7 @@ h2{
         radial-gradient(circle at 50% 170%, #030507 14vw, transparent calc(14vw + 1px)),
         
         /* Lateral Direita (Voltando a crescer) */
-        radial-gradient(circle at 66% 150%, #030507 15vw, transparent calc(15vw + 1px)),
+        radial-gradient(circle at 67% 150%, #030507 14vw, transparent calc(14vw + 1px)),
         radial-gradient(circle at 84% 140%, #030507 12vw, transparent calc(12vw + 1px)),
         radial-gradient(circle at 102% 120%, #030507 14vw, transparent calc(14vw + 1px));
         
