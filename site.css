@@ -290,41 +290,6 @@ h2{
 }
 
 /* SEC2 */
-/* ========================================= */
-/* PALCO SCROLLYTELLING (STACKING)           */
-/* ========================================= */
-.pin-master {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Segura o tamanho do ecrã */
-    overflow: hidden;
-}
-
-/* Sec1 e Sec2 coladas no mesmo lugar */
-.sec1, .sec2 {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-}
-
-.sec1 {
-    z-index: 2; /* Fica na frente */
-}
-
-.sec2 {
-    z-index: 1; /* Fica escondida atrás da Sec1 */
-    opacity: 0; /* Começa totalmente invisível */
-}
-
-/* Garanta que a cortina tem z-index máximo para cobrir a Sec1 e Sec2 */
-.slices-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 110vh;
-    display: flex;
-    z-index: 99; /* Por cima de tudo! */
-    pointer-events: none; 
-}
 
 .sec2 {
     background-color: #030507;
@@ -1059,7 +1024,6 @@ h2{
         max-width: 50%;
         width: 100%;
         align-items: end;
-
     }
 }
 
