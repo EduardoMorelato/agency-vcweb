@@ -81,3 +81,35 @@ if (faqItems.length > 0) {
         });
     });
 }
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Cria o "Palco Fixo"
+const tlMaster = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".pin-master",
+        start: "top top",
+        end: "+=2000", // Distância de scroll (aumente se quiser que demore mais)
+        pin: true,     // Prende a tela
+        scrub: 1,      // Sincroniza com a rodinha do rato
+    }
+});
+
+// PASSO 1: A cortina desce e tampa a visão do utilizador
+tlMaster.to(".slice", {
+    yPercent: 100, 
+    stagger: 0.1,  
+    ease: "none"
+})
+
+// PASSO 2: A Mágica de Bastidores! (Atrás da cortina)
+// Apaga a Sec1 e acende a Sec2 simultaneamente (o sinal "<" faz acontecer ao mesmo tempo)
+.to(".sec1", { opacity: 0, duration: 0.1 }, ">") 
+.to(".sec2", { opacity: 1, duration: 0.1 }, "<") 
+
+// PASSO 3: A cortina sobe de volta revelando a Sec2 já acesa
+.to(".slice", {
+    yPercent: -100, // Volta para o teto
+    stagger: 0.1,
+    ease: "none"
+});
