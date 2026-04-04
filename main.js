@@ -1,16 +1,17 @@
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 gsap.to(".slice", {
     scrollTrigger: {
-        trigger: ".sec1", 
-        start: "top top", 
-        end: "+=150%",    
-        scrub: 1,         
-        pin: true,        
+        trigger: ".sec1",
+        start: "top top",
+        end: "+=150%",
+        scrub: 1,
+        pin: true,
     },
-    yPercent: 100, 
-    stagger: 0.1,  
+    yPercent: 100,
+    stagger: 0.1, 
     ease: "none"
 });
 
@@ -18,13 +19,13 @@ gsap.to(".slice", {
 gsap.from(".sec2 .filosofia", {
     scrollTrigger: {
         trigger: ".sec2",
-        start: "top 70%", 
+        start: "top 70%",
     },
-    y: 50, 
-    opacity: 0, 
+    y: 50,
+    opacity: 0,
     duration: 1.2,
     ease: "power3.out"
-}); 
+});
 
 ScrollTrigger.create({
     trigger: ".sec2",
@@ -42,10 +43,10 @@ ScrollTrigger.create({
 const faqItems = document.querySelectorAll('.js-faq-item');
 
 if (faqItems.length > 0) {
-    const animConfig = { 
-        duration: 0.5, 
-        ease: "cubic-bezier(0.16, 1, 0.3, 1)", 
-        overwrite: "auto" 
+    const animConfig = {
+        duration: 0.5,
+        ease: "cubic-bezier(0.16, 1, 0.3, 1)",
+        overwrite: "auto"
     };
 
     faqItems.forEach(item => {
@@ -68,7 +69,7 @@ if (faqItems.length > 0) {
                     if (otherItem !== item && otherItem.classList.contains('is-open')) {
                         otherItem.classList.remove('is-open');
                         otherItem.querySelector('.js-faq-question').setAttribute('aria-expanded', 'false');
-                        
+
                         gsap.to(otherItem.querySelector('.js-faq-answer'), { height: 0, ...animConfig });
                     }
                 });
@@ -81,3 +82,21 @@ if (faqItems.length > 0) {
         });
     });
 }
+
+
+// SEPARANDO LETRA POR LETRA SEC2
+function animarTitulo(){
+    const split = SplitText.create(".filosofia h2", {
+    type: "chars",
+    mask: "chars"
+});
+
+gsap.from(split.chars, {
+    y: "100",
+    opacity: 0,
+    duration: 0.2,
+    stagger: .06,
+    delay: .5,
+})}
+
+// console.log(split)
