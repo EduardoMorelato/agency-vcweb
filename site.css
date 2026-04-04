@@ -58,7 +58,26 @@ body{
     color: #030507;
 }
 
-/* 2. REGRA CONTEXTUAL: Para as áreas claras (como a Sec5) */
+.sec3 ::selection {
+    background-color: #030507; /* O fundo da seleção fica preto */
+    color: #f8f8f8; /* O texto fica clarinho */
+}
+
+.sec3 ::-moz-selection {
+    background-color: #030507;
+    color: #f8f8f8;
+}
+
+.faq-accordion ::selection {
+    background-color: #030507; /* O fundo da seleção fica preto */
+    color: #f8f8f8; /* O texto fica clarinho */
+}
+
+.faq-accordion ::-moz-selection {
+    background-color: #030507;
+    color: #f8f8f8;
+}
+
 .sec5 ::selection {
     background-color: #030507; /* O fundo da seleção fica preto */
     color: #f8f8f8; /* O texto fica clarinho */
@@ -106,7 +125,7 @@ header img {
 
 ul{
     display: flex;
-    gap: 4vw;
+    gap: 4.5vw;
     list-style-type: none;
     padding: 0px;
     margin: 0px;
@@ -190,7 +209,7 @@ h2{
 .sec1 {
     position: relative;
     min-height: 100vh; 
-    overflow: hidden; 
+    /* overflow: hidden; */
     align-items: start;
     justify-content: center;
     display: flex;
@@ -243,7 +262,7 @@ h2{
     left: 0;
     width: 100%;
     height: 120%; 
-    background: linear-gradient(to top, #030507 0%, transparent 100%);
+    background: linear-gradient(to top, #030507 1%, transparent 100%);
     z-index: -1;
 }
 
@@ -253,9 +272,9 @@ h2{
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 110vh;
     display: flex;
-    z-index: 20; 
+    /* z-index: 20;  */
     pointer-events: none; 
     overflow: hidden;
 }
@@ -266,28 +285,26 @@ h2{
     height: 100%;
     background-color: #030507;
     transform: translateY(-100%); 
-    border-radius: 0px 0px 40px 0px;
+    border-radius: 0px 0px 6vh 0px;
+    z-index: 2;
 }
 
 /* SEC2 */
 
 .sec2 {
+    background-color: #030507;
     position: relative;
     min-height: 100vh; 
-    overflow: hidden; 
+    overflow: hidden;
     align-items: start;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    
+
     h2 {
         font-size: 4vw;
         font-weight: normal;
-        line-height: 4.3vw; 
-
-        .char {
-            opacity: 0;
-        }
+        line-height: 4.3vw;
     }
 }
 
@@ -796,7 +813,6 @@ h2{
         padding: 50px 20px;
         background: transparent;
         border: none;
-        cursor: pointer;
         text-align: center;
         outline: none;
         transition: background-image 0.4s ease; /* Transição suave do hover */
@@ -857,14 +873,13 @@ h2{
     width: 100%;
     max-width: 100%;
     margin: 100px auto; 
-    height: 80vh; 
+    height: 90vh; 
     min-height: 60vh;
-    border-radius: 40px; 
     overflow: hidden; 
     display: flex;
     align-items: center; 
     padding: 1vw 5vw; 
-    margin: 0px 1vw 120px 1vw;
+    margin: 0px 0 120px 0;
 
     /* O VÍDEO DE FUNDO */
     .bglegal {
@@ -884,7 +899,7 @@ h2{
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
         z-index: 1;
     }
 
@@ -951,4 +966,71 @@ h2{
             }
         }
     }
+}
+
+
+.sec8{
+    margin: 0;
+    position: relative;
+    background-color: #030507;
+    display: flex;
+    justify-content: space-between; 
+    padding: 0 1vw; 
+    max-width: 100%;
+    min-height: 60vh;
+
+    .esquerda {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        max-width: 50%;
+        width: 100%;
+        align-items: start;
+
+        h2 { 
+            font-weight: 400;
+            max-width: 20vw;
+            margin-right: -60px; 
+        }
+
+        button{
+            background-color: transparent;
+            border: 1px solid #f8f8f8;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(45deg);
+            margin-top: 6.6vw;
+            cursor: pointer;
+            transition: all 0.5s ease;
+
+            &:hover{
+                transform: scale(1.05); rotate: calc(406deg);
+            }
+            
+        }
+
+        em {
+            font-style: italic;
+            font-weight: 600;
+            color: #f8f8f8;
+        }
+    }
+
+    .direita {
+        display: flex;
+        justify-content: flex-end;
+        max-width: 50%;
+        width: 100%;
+        align-items: end;
+
+        h2{
+            
+        }
+    }
+}
+
+.sec9{
+    margin: ;
 }
