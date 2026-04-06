@@ -24,19 +24,39 @@ const split = new SplitText(".linha-manual", {
     type: "chars", 
 });
 
-// 2. Criamos a animação atrelada ao scroll
-// O texto não tem movimento (y: 0), ele apenas "acende"
 gsap.to(split.chars, {
     scrollTrigger: {
         trigger: ".sec2",
         start: "top top",
-        end: "+=250%",
+        end: "+=150%",
         pin: true,
         scrub: 1,
     },
-    color: "#f8f8f8",     // Acende para branco
+    
+    // A MÁGICA DA ONDA (O "Roteiro" da Letra):
+    keyframes: [
+        // Passo 1: A "ponta" da fila (A luz bate na letra)
+        { 
+            color: "rgb(255, 255, 255)", // Acende no Ciano
+            scale: 1.1,                 // Dá aquele zoom de destaque
+            duration: 1                 // Proporção de tempo
+        }, 
+        
+        // Passo 2: O "rastro" da fila (A luz passou)
+        { 
+            color: "#f8f8f8d5",           // Esfria e fica Branco
+            scale: 1.1,                  
+            duration: .8,
+        }
+    ],
+    
+    // color: "#f8f8f8",     
+    // A LUZ NEON POR TRÁS DA LETRA:
+    textShadow: "0px 0px 14px rgba(255, 255, 255, 0.1)", 
+    // scale: 1.1,          
+    transformOrigin: "bottom", 
     stagger: 0.1,
-    ease: "none"
+    ease: "power1.inOut"
 });
 
 
