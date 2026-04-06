@@ -29,7 +29,7 @@ gsap.to(split.chars, {
         trigger: ".sec2",
         start: "top top",
         end: "+=150%",
-        pin: true,
+        // pin: true,
         scrub: 1,
     },
     
@@ -108,20 +108,39 @@ if (faqItems.length > 0) {
 }
 
 
-// 
-// SEPARANDO LETRA POR LETRA SEC2
-// function animarTitulo(){
-//     const split = SplitText.create(".filosofia h2", {
-//     type: "chars",
-//     mask: "chars"
-// });
+// ======================================================
+// SMART HEADER: SOME AO DESCER, APARECE AO SUBIR
+// ======================================================
 
-// gsap.from(split.chars, {
-//     y: "100",
-//     opacity: 0,
-//     duration: 0.2,
-//     stagger: .06,
-//     delay: .5,
-// })}
+// ======================================================
+// SMART HEADER: SOME AO DESCER, FUNDO PRETO AO ROLAR
+// ======================================================
 
-// // console.log(split)
+const header = document.querySelector("header");
+
+const headerAnim = gsap.from(header, { 
+  yPercent: -100,
+  paused: true,
+  duration: 0.3
+}).progress(1);
+
+ScrollTrigger.create({
+  start: "top top",
+  end: "max",
+  onUpdate: (self) => {
+    // 1. Lógica de Esconder/Mostrar (Sobe ou Desce)
+    if (self.direction === -1) {
+      headerAnim.play(); // Mostra ao subir
+    } else {
+      headerAnim.reverse(); // Esconde ao descer
+    }
+    
+    // 2. Lógica do Contraste (Fundo Preto)
+    // Se a página rolou mais de 50px para baixo, injeta a classe escura
+    if (window.scrollY > 50) {
+        header.classList.add("header-dark");
+    } else {
+        header.classList.remove("header-dark"); // Volta a ser transparente no topo
+    }
+  }
+});
