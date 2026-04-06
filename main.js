@@ -112,10 +112,6 @@ if (faqItems.length > 0) {
 // SMART HEADER: SOME AO DESCER, APARECE AO SUBIR
 // ======================================================
 
-// ======================================================
-// SMART HEADER: SOME AO DESCER, FUNDO PRETO AO ROLAR
-// ======================================================
-
 const header = document.querySelector("header");
 
 const headerAnim = gsap.from(header, { 
@@ -137,10 +133,133 @@ ScrollTrigger.create({
     
     // 2. Lógica do Contraste (Fundo Preto)
     // Se a página rolou mais de 50px para baixo, injeta a classe escura
-    if (window.scrollY > 50) {
+    if (window.scrollY > 10) {
         header.classList.add("header-dark");
     } else {
         header.classList.remove("header-dark"); // Volta a ser transparente no topo
     }
   }
 });
+
+    onUpdate: (self) => {
+        // self.getVelocity() lê a agressividade do seu scroll
+        // Dividimos por 300 para o multiplicador ficar suave e não distorcer a tela
+        let velocidadeScroll = self.getVelocity() / 100; 
+        
+        // Multiplicador da velocidade: 1 é o normal. 
+        // Se rolar para baixo, aumenta (ex: 2.5x mais rápido). 
+        // Se rolar para cima, fica negativo e a animação RODA PARA TRÁS!
+        let multiplicador = 1.5 + velocidadeScroll; 
+        
+        gsap.to([loopCol1, loopCol2], { 
+            timeScale: multiplicador, 
+            overwrite: true,
+            duration: 0.2 // Tempo de resposta do arranque
+        });
+
+        clearTimeout(tempoScroll);
+        tempoScroll = setTimeout(() => {
+            gsap.to([loopCol1, loopCol2], { timeScale: 1, duration: 0.8 });
+        }, 150);
+    }
+
+// ======================================================
+// SEC4: INFINITE VELOCITY MARQUEE (AUTO-PLAY + SCROLL)
+// ======================================================
+
+// 1. O MOTOR AUTOPLAY (Rola infinitamente sozinho)
+// Move até exatamente a metade (-50%) onde a cópia começa, e repete sem ninguém notar!
+const loopCol1 = gsap.to(".col-1", {
+    yPercent: -50, 
+    repeat: -1, 
+    duration: 45, // Quão rápido rola sozinho (aumente para ficar mais lento)
+    ease: "none"
+});
+
+const loopCol2 = gsap.fromTo(".col-2", 
+    { yPercent: -50 }, 
+    { yPercent: 0, 
+        repeat: -1, 
+        duration: 45, 
+        ease: "none" }
+);
+
+// 2. O ACELERADOR DO SCROLL (Lê o seu rato)
+let tempoScroll;
+
+ScrollTrigger.create({
+    trigger: ".sec4",
+    start: "top bottom",
+    end: "bottom top",
+    onUpdate: (self) => {
+        // self.getVelocity() lê a agressividade do seu scroll
+        // Dividimos por 300 para o multiplicador ficar suave e não distorcer a tela
+        let velocidadeScroll = self.getVelocity() / 100; 
+        
+        // Multiplicador da velocidade: 1 é o normal. 
+        // Se rolar para baixo, aumenta (ex: 2.5x mais rápido). 
+        // Se rolar para cima, fica negativo e a animação RODA PARA TRÁS!
+        let multiplicador = 1.5 + velocidadeScroll; 
+        
+        gsap.to([loopCol1, loopCol2], { 
+            timeScale: multiplicador, 
+            overwrite: true,
+            duration: 0.2 // Tempo de resposta do arranque
+        });
+
+        clearTimeout(tempoScroll);
+        tempoScroll = setTimeout(() => {
+            gsap.to([loopCol1, loopCol2], { timeScale: 1, duration: 0.8 });
+        }, 150);
+    }
+});
+
+
+// ======================================================
+// HERO WORD FLIPPER: TROCA DE PALAVRAS NA SEC1 (PREMIUM)
+// ======================================================
+
+// 1. A sua lista de palavras estratégicas em Inglês
+const words = [ "websites", "logos", "banners", "ads", "products", "moments", "creatives", "systems", "experiences"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const wordElement = document.querySelector(".word-rotator");
+
+if (wordElement) {
+    // Começa com a caixa vazia para o efeito ser 100% autêntico
+    wordElement.innerText = ""; 
+
+    function typeWriter() {
+        const currentWord = words[wordIndex];
+
+        // Lógica de escrever ou apagar letras
+        if (isDeleting) {
+            wordElement.innerText = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            wordElement.innerText = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        // VELOCIDADES DA DIGITAÇÃO (Pode ajustar estes números)
+        let typeSpeed = isDeleting ? 40 : 100; // 40ms a apagar, 100ms a escrever
+
+        // Se acabou de ESCREVER a palavra inteira
+        if (!isDeleting && charIndex === currentWord.length) {
+            typeSpeed = 2000; // Espera 2 segundos para o utilizador ler
+            isDeleting = true;
+        } 
+        // Se acabou de APAGAR a palavra inteira
+        else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length; // Passa para a próxima palavra
+            typeSpeed = 500; // Faz uma pausa de meio segundo antes de começar a escrever a nova
+        }
+
+        setTimeout(typeWriter, typeSpeed);
+    }
+
+    // Inicia o loop
+    typeWriter();
+}

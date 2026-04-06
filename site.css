@@ -126,8 +126,9 @@ header{
 }
 
 .header-dark {
-    background-color: rgba(3, 5, 7, 0.95); /* O seu fundo preto (#030507), mas com 95% de opacidade */
-    backdrop-filter: blur(12px); /* O segredo do design premium: desfoca o que passar por trás! */
+    background-color: rgba(3, 5, 7, 0.95); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px); 
 }
 
 header img {
@@ -256,6 +257,26 @@ h2{
         cursor: pointer;
         transition: all 0.3s ease;
     }
+}
+
+/* ========================================= */
+/* WORD ROTATOR (EFEITO TYPEWRITER)          */
+/* ========================================= */
+.word-rotator {
+    display: inline-block; 
+    color: #f8f8f8; 
+    font-style: italic; 
+    
+    /* A MÁGICA DO CURSOR A PISCAR */
+    border-right: 3px solid #f8f8f8; /* A grossura e cor do cursor */
+    padding-right: 5px; /* Distância entre a última letra e o cursor */
+    animation: blinkCursor 0.7s infinite; /* Chama a animação abaixo */
+}
+
+/* O Motor do Pisca-Pisca */
+@keyframes blinkCursor {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #f8f8f8;}
 }
 
 .sec1 video {
@@ -506,7 +527,6 @@ h2{
     box-shadow: 
         0 40px 80px rgba(0, 0, 0, 0.15),
         0 10px 20px rgba(0, 0, 0, 0.1),
-        inset 3px 3px 12px rgba(255, 255, 255, 0.2),
 }
 
 .sec4 .esquerda em {
@@ -515,13 +535,16 @@ h2{
 }
 
 .sec4 .direita {
-    width: 50%;
+    width: 60%;
     height: 100%;
     display: flex;
     gap: 24px;
     overflow: hidden; 
+    align-items: flex-start;
     mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    padding: 0 15px; 
+    margin: 0 -15px; 
 }
 
 /* AS DUAS ESTEIRAS */
@@ -530,7 +553,9 @@ h2{
     flex-direction: column;
     gap: 24px;
     width: 50%; 
-    will-change: transform; /* Avisa a placa de vídeo para focar na animação que faremos no JS */
+    height: max-content; 
+    padding-bottom: 24px; /* AJUSTADO PARA 24px PARA MATAR O "PULINHO" */    
+    will-change: transform;
 }
 
 /* Intercala a segunda coluna, começando mais de cima */
@@ -538,7 +563,7 @@ h2{
     transform: translateY(-20%); 
 }
 
-/* DESIGN INDIVIDUAL DO CARD */
+/* 2. O Card Base (Transição mais suave) */
 .sec4 .card {
     background-color: rgba(255, 255, 255, 0); 
     border: 1px solid rgb(38, 203, 186); 
@@ -547,11 +572,13 @@ h2{
     display: flex;
     flex-direction: column;
     gap: 16px;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, box-shadow 0.6s ease, background-color 0.6s ease;
+    will-change: transform, opacity;
 }
 
 .sec4 .card h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2vw; /* Ajusta o texto dinamicamente com o monitor */
+    font-size: 1.2vw;
     font-weight: 400;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.9);
@@ -566,6 +593,25 @@ h2{
     color: rgb(38, 203, 186);
     font-weight: 600;
 }
+
+/* ======================================================= */
+/* EFEITO SPOTLIGHT CORRIGIDO                              */
+/* ======================================================= */
+
+.sec4 .direita:hover .card {
+    opacity: 0.25; /* Ficam bem mais opacos/apagados */
+    transform: scale(0.95); /* Encolhem para trás */
+}
+
+/* O cartão EXATO com o rato por cima acende e vem para a frente */
+.sec4 .direita .card:hover {
+    opacity: 1;
+    transform: scale(1.05); /* Cresce sem cortar por causa do padding novo */
+    background-color: rgba(38, 203, 186, 0.03);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
 
 /* ========================================= */
 /* SEC5 - LEAD CAPTURE FORM                  */
@@ -624,18 +670,19 @@ h2{
     border-radius: 100px; 
     padding: 8px 10px 8px 40px; 
     align-items: center;
-    transform: scale(1);
+    
+    /* Zero transforms! O segredo é animar as medidas reais da caixa */
     transition: 
         border-color 0.4s ease, 
-        box-shadow 0.4s ease, 
-        background-color 0.8s ease,
-        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        padding 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .analysis-form:focus-within {
     border-color: #030507;
-    background-color: rgba(153, 151, 151, 0.1);
-    transform: scale(1.009); 
+    background-color: #03050708;
+    width: 89%; 
+    padding: 7px 9px 7px 40px; 
 }
 
 .input-group {
