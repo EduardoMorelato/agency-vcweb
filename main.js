@@ -16,33 +16,25 @@ gsap.to(".slice", {
 });
 
 // ======================================================
-// SCROLLYTELLING SEC2: TEXTO REVELADO NO CENTRO DA TELA
+// SCROLLYTELLING SEC2: TEXTO REVELADO COM O SCROLL
 // ======================================================
 
-const split = new SplitText(".filosofia h2", {
-    type: "chars",
-    mask: "chars"
+// 1. Fatiamos o texto em letras usando o SplitText
+const split = new SplitText(".linha-manual", { 
+    type: "chars", 
 });
 
-// MOTOR 1: O PINO (Segura a tela no lugar quando bater no topo)
-ScrollTrigger.create({
-    trigger: ".sec2",
-    start: "top top", 
-    end: "+=150%",
-    pin: true,
-    pinSpacing: true
-});
-
-// MOTOR 2: A ANIMAÇÃO (Gatilho no centro da tela)
-gsap.from(split.chars, {
+// 2. Criamos a animação atrelada ao scroll
+// O texto não tem movimento (y: 0), ele apenas "acende"
+gsap.to(split.chars, {
     scrollTrigger: {
-        trigger: ".filosofia h2", // A MÁGICA 1: O gatilho agora é o próprio texto
-        start: "center center",   // A MÁGICA 2: Começa exatamente quando o texto bate no meio do ecrã!
-        end: "+=150%",            // Termina a animação junto com o pino da tela
-        scrub: 1
+        trigger: ".sec2",
+        start: "top top",
+        end: "+=250%",
+        pin: true,
+        scrub: 1,
     },
-    y: 80,            // Reduzi um pouco o 'y' (de 100 para 80) para o movimento ser mais elegante
-    opacity: 0,
+    color: "#f8f8f8",     // Acende para branco
     stagger: 0.1,
     ease: "none"
 });
@@ -94,3 +86,22 @@ if (faqItems.length > 0) {
         });
     });
 }
+
+
+// 
+// SEPARANDO LETRA POR LETRA SEC2
+// function animarTitulo(){
+//     const split = SplitText.create(".filosofia h2", {
+//     type: "chars",
+//     mask: "chars"
+// });
+
+// gsap.from(split.chars, {
+//     y: "100",
+//     opacity: 0,
+//     duration: 0.2,
+//     stagger: .06,
+//     delay: .5,
+// })}
+
+// // console.log(split)
