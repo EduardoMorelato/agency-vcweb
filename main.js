@@ -263,3 +263,38 @@ if (wordElement) {
     // Inicia o loop
     typeWriter();
 }
+
+// ======================================================
+// OTIMIZAÇÃO DE VÍDEOS (LAZY PLAY & PERFORMANCE)
+// ======================================================
+
+// Espera o HTML básico estar pronto
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. VÍDEO DA HERO (Sec1)
+    // Selecione a classe correta do seu vídeo da sec1 aqui
+    const heroVideo = document.querySelector(".sec1 video"); 
+    
+    if (heroVideo) {
+        // O navegador processa o site, espera 800 milissegundos e dá o play
+        // Isso impede que o vídeo "roube" processamento das animações de entrada
+        setTimeout(() => {
+            heroVideo.play().catch(e => console.log("Play bloqueado pelo navegador"));
+        }, 800); 
+    }
+
+    // 2. VÍDEO DO CTA (Sec7) - O SEGREDO DA BATERIA
+    // Selecione a classe correta do seu vídeo da sec7 aqui
+    const ctaVideo = document.querySelector(".sec7 video");
+    
+    if (ctaVideo) {
+        ScrollTrigger.create({
+            trigger: ".sec7",
+            start: "top bottom", // Dispara assim que a sec7 espreita no fundo do ecrã
+            onEnter: () => ctaVideo.play(), // Dá o play quando entra na tela
+            onLeave: () => ctaVideo.pause(), // Pausa quando passa dela (rola para baixo)
+            onEnterBack: () => ctaVideo.play(), // Dá o play se rolar para cima de novo
+            onLeaveBack: () => ctaVideo.pause() // Pausa se voltar para a sec6
+        });
+    }
+});
