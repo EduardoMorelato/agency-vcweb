@@ -1,3 +1,17 @@
+/* ========================================= */
+/* VARIÁVEIS GLOBAIS (DESIGN SYSTEM)         */
+/* ========================================= */
+:root {
+    --ciano: rgb(38, 203, 186);
+    --branco-opacidade: var(255, 255, 255, 0.7);
+    --bg-dark: #030303;
+    --texto-claro: #f0f0f0;
+    --texto-mutado: rgba(255, 255, 255, 0.5);
+    
+    --font-principal: 'Montreal', sans-serif;
+    --font-secundaria: 'Poppins', sans-serif;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -45,8 +59,8 @@ a {
 }
 
 body{
-    background-color: #030507;
-    color: rgba(255, 255, 255, 0.9);
+    background-color: var(--bg-dark);
+    color: var(--texto-claro);
 }
 
 /* ========================================= */
@@ -55,54 +69,54 @@ body{
 
 /* 1. REGRA GLOBAL: Para as áreas escuras do site */
 ::selection {
-    background-color: rgba(255, 255, 255, 0.9); 
-    color: #030507; 
+    background-color: var(--texto-claro); 
+    color: var(--bg-dark); 
 }
 
 ::-moz-selection {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #030507;
+    background-color: var(--texto-claro);
+    color: var(--bg-dark);
 }
 
 .sec3 ::selection {
-    background-color: #030507; /* O fundo da seleção fica preto */
-    color: #f8f8f8; /* O texto fica clarinho */
+    background-color: var(--bg-dark); /* O fundo da seleção fica preto */
+    color: var(--texto-claro); /* O texto fica clarinho */
 }
 
 .sec3 ::-moz-selection {
-    background-color: #030507;
-    color: #f8f8f8;
+    background-color: var(--bg-dark);
+    color: var(--texto-claro);
 }
 
 .faq-accordion ::selection {
-    background-color: #030507; /* O fundo da seleção fica preto */
-    color: #f8f8f8; /* O texto fica clarinho */
+    background-color: var(--bg-dark); /* O fundo da seleção fica preto */
+    color: var(--texto-claro); /* O texto fica clarinho */
 }
 
 .faq-accordion ::-moz-selection {
-    background-color: #030507;
-    color: #f8f8f8;
+    background-color: var(--bg-dark);
+    color: var(--texto-claro);
 }
 
 .sec5 ::selection {
-    background-color: #030507; /* O fundo da seleção fica preto */
-    color: #f8f8f8; /* O texto fica clarinho */
+    background-color: var(--bg-dark); /* O fundo da seleção fica preto */
+    color: var(--texto-claro); /* O texto fica clarinho */
 }
 
 .sec5 ::-moz-selection {
-    background-color: #030507;
-    color: #f8f8f8;
+    background-color: var(--bg-dark);
+    color: var(--texto-claro);
 }
 
 /* (Opcional) Aplica também para o texto digitado dentro do formulário */
 .analysis-form input::selection {
-    background-color: #030507;
-    color: #f8f8f8;
+    background-color: var(--bg-dark);
+    color: var(--texto-claro);
 }
 
 .analysis-form input::-moz-selection {
-    background-color: #030507;
-    color: #f8f8f8;
+    background-color: var(--bg-dark);
+    color: var(--texto-claro);
 }
 
 body, button{
@@ -126,7 +140,7 @@ header{
 }
 
 .header-dark {
-    background-color: rgba(3, 5, 7, 0.95); 
+    background-color: var(--bg-dark); 
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(12px); 
 }
@@ -150,7 +164,7 @@ header button {
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--texto-claro);
     color: rgba(255, 255, 255, 1);
     gap: 20px;
     border-radius: 40px;
@@ -183,43 +197,6 @@ h2{
     line-height: 3.5vw;
 }
 
-/* ========================================= */
-/* SELEÇÃO DE TEXTO PREMIUM (HÍBRIDA)        */
-/* ========================================= */
-
-/* 1. REGRA GLOBAL: Para as áreas escuras do site */
-::selection {
-    background-color: rgba(255, 255, 255, 0.9); 
-    color: #030507; 
-}
-
-::-moz-selection {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #030507;
-}
-
-/* 2. REGRA CONTEXTUAL: Para as áreas claras (como a Sec5) */
-.sec5 ::selection {
-    background-color: #030507; /* O fundo da seleção fica preto */
-    color: #f8f8f8; /* O texto fica clarinho */
-}
-
-.sec5 ::-moz-selection {
-    background-color: #030507;
-    color: #f8f8f8;
-}
-
-/* (Opcional) Aplica também para o texto digitado dentro do formulário */
-.analysis-form input::selection {
-    background-color: #030507;
-    color: #f8f8f8;
-}
-
-.analysis-form input::-moz-selection {
-    background-color: #030507;
-    color: #f8f8f8;
-}
-
 .sec1 {
     position: relative;
     min-height: 100vh; 
@@ -240,7 +217,7 @@ h2{
         p{ 
             font-size: 14px;
             letter-spacing: 4px;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--branco-opacidade);
             margin-bottom: 26px;}             
     }
 
@@ -248,9 +225,9 @@ h2{
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: var(--texto-claro);
         border: none;
-        color: rgb(6, 6, 6);
+        color: var(--bg-dark);
         gap: 14px;
         border-radius: 40px;
         padding: 6px 6px 6px 24px;
@@ -264,11 +241,11 @@ h2{
 /* ========================================= */
 .word-rotator {
     display: inline-block; 
-    color: #f8f8f8; 
+    color: var(--texto-claro); 
     font-style: italic; 
     
     /* A MÁGICA DO CURSOR A PISCAR */
-    border-right: 3px solid #f8f8f8; /* A grossura e cor do cursor */
+    border-right: 3px solid var(--texto-claro); /* A grossura e cor do cursor */
     padding-right: 5px; /* Distância entre a última letra e o cursor */
     animation: blinkCursor 0.7s infinite; /* Chama a animação abaixo */
 }
@@ -276,7 +253,7 @@ h2{
 /* O Motor do Pisca-Pisca */
 @keyframes blinkCursor {
     0%, 100% { border-color: transparent; }
-    50% { border-color: #f8f8f8;}
+    50% { border-color: var(--texto-claro);}
 }
 
 .sec1 video {
@@ -296,7 +273,7 @@ h2{
     left: 0;
     width: 100%;
     height: 120%; 
-    background: linear-gradient(to top, #030507 1%, transparent 100%);
+    background: linear-gradient(to top, var(--bg-dark) 1%, transparent 100%);
     z-index: -1;
 }
 
@@ -317,7 +294,7 @@ h2{
 .slice {
     flex: 1; 
     height: 100%;
-    background-color: #030507;
+    background-color: var(--bg-dark);
     transform: translateY(-100%); 
     border-radius: 0px 0px 6vh 0px;
     z-index: 1;
@@ -326,7 +303,7 @@ h2{
 /* SEC2 */
 
 .sec2 {
-    background-color: #030507;
+    background-color: var(--bg-dark);
     position: sticky; 
     top: 0;           
     margin-bottom: 150vh; /* 3. O SEGREDO: Cria o espaço de rolagem para o texto animar */
@@ -354,7 +331,7 @@ h2{
 
 .sec3{
     position: relative;
-    background-color: #f8f8f8; /* Fundo sólido para cobrir a sec2 perfeitamente */
+    background-color: var(--texto-claro); /* Fundo sólido para cobrir a sec2 perfeitamente */
     padding-top: 100px;
     padding-bottom: 100px;
 
@@ -372,7 +349,7 @@ h2{
                 font-weight: 400;
                 line-height: 3.5vw;
                 word-spacing: -10px;
-                color: #030507;
+                color: var(--bg-dark);
 
                 em{
                     font-style: italic;
@@ -382,7 +359,7 @@ h2{
 
             p{
                 margin-top: 16px;
-                color: #030507;
+                color: var(--bg-dark);
             }
         }
 
@@ -391,16 +368,16 @@ h2{
                 justify-content: center;
                 align-items: center;
                 background-color: transparent;
-                border: 1px solid #030507;
-                color: #030507;
+                border: 1px solid var(--bg-dark);
+                color: var(--bg-dark);
                 border-radius: 40px;
                 padding: 8px 46px;
                 cursor: pointer;
                 transition: all 0.3s ease;
 
                 &:hover {
-                    background-color: #030507;
-                    color: #f8f8f8;
+                    background-color: var(--bg-dark);
+                    color: var(--texto-claro);
             }
         }   
     }
@@ -449,9 +426,9 @@ h2{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: #030507;
-                border: 1px solid #030507;
-                color: #f8f8f8;
+                background-color: var(--bg-dark);
+                border: 1px solid var(--bg-dark);
+                color: var(--texto-claro);
                 gap: 20px;
                 border-radius: 40px;
                 padding: 4px 8px 4px 40px;
@@ -459,8 +436,8 @@ h2{
                 transition: all 0.3s ease;
 
                 &:hover {
-                    background-color: #f8f8f8;
-                    color: #030507;
+                    background-color: var(--texto-claro);
+                    color: var(--bg-dark);
                     scale: calc(1.04);
                     }
                 }
@@ -477,7 +454,7 @@ h2{
     position: relative;
     padding: 100px 0 50px 0;
     overflow: hidden;
-    background-color: #f8f8f8;
+    background-color: var(--texto-claro);
 
     .esquerda {
         width: 40%;
@@ -488,7 +465,7 @@ h2{
 
         h2 {
             font-weight: 400;
-            color: #f8f8f8;
+            color: var(--texto-claro);
         }
 
         button {
@@ -496,8 +473,8 @@ h2{
             display: flex;
             align-items: center;
             background-color: transparent;
-            border: 1px solid #f8f8f8;
-            color: #f8f8f8;
+            border: 1px solid var(--texto-claro);
+            color: var(--texto-claro);
             gap: 20px;
             border-radius: 40px;
             padding: 12px 28px;
@@ -505,8 +482,8 @@ h2{
             transition: all 0.3s ease;
 
             &:hover {
-                background-color: #f8f8f8;
-                color: #030507;
+                background-color: var(--texto-claro);
+                color: var(--bg-dark);
                 scale: calc(1.08);
              }
         }
@@ -520,7 +497,7 @@ h2{
     height: 90vh; 
     gap: 6vw; 
     margin: 0 1.5vw;
-    background-color: #030507; 
+    background-color: var(--bg-dark); 
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 40px; 
     padding: 60px; 
@@ -541,8 +518,8 @@ h2{
     gap: 24px;
     overflow: hidden; 
     align-items: flex-start;
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, var(--bg-dark) 10%, var(--bg-dark) 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, var(--bg-dark) 10%, var(--bg-dark) 90%, transparent);
     padding: 0 15px; 
     margin: 0 -15px; 
 }
@@ -565,7 +542,7 @@ h2{
 
 /* 2. O Card Base (Transição mais suave) */
 .sec4 .card {
-    background-color: rgba(255, 255, 255, 0); 
+    background-color: transparent; 
     border: 1px solid rgb(38, 203, 186); 
     border-radius: 24px;
     padding: 40px;
@@ -581,12 +558,12 @@ h2{
     font-size: 1.2vw;
     font-weight: 400;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--branco-opacidade);
 }
 
 .sec4 .card p {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--texto-mutado);
 }
 
 .sec4 .card b {
@@ -619,7 +596,7 @@ h2{
 
 .sec5 {
     position: relative;
-    background-color: #f8f8f8;
+    background-color: var(--texto-claro);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -627,7 +604,7 @@ h2{
     padding-top: calc(10px + 12vw);
 
     h2{
-        color: #030507;
+        color: var(--bg-dark);
         font-weight: 400;
     }
 }
@@ -666,7 +643,7 @@ h2{
     display: flex;
     width: 90%;
     background-color: rgba(0, 0, 0, 0.02); 
-    border: 1px solid #030507;
+    border: 1px solid var(--bg-dark);
     border-radius: 100px; 
     padding: 8px 10px 8px 40px; 
     align-items: center;
@@ -679,8 +656,8 @@ h2{
 }
 
 .analysis-form:focus-within {
-    border-color: #030507;
-    background-color: #03050708;
+    border-color: var(--bg-dark);
+    background-color: var(--bg-dark)08;
     width: 89%; 
     padding: 7px 9px 7px 40px; 
 }
@@ -692,7 +669,7 @@ h2{
 
 /* Linha separadora elegante entre o URL e o Email */
 .input-group:first-of-type {
-    border-right: 1px solid  #03050780;
+    border-right: 1px solid  var(--bg-dark)80;
     margin-right: 40px;
     padding-right: 40px;
 }
@@ -702,23 +679,23 @@ h2{
     width: 100%;
     background: transparent;
     border: none;
-    color: #030507;
+    color: var(--bg-dark);
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 16px;
     outline: none; /* Remove a borda azul padrão do Chrome */
-    caret-color: #030507 !important; /* Cor do cursor de texto */
+    caret-color: var(--bg-dark) !important; /* Cor do cursor de texto */
 }
 
 .analysis-form input::placeholder {
-    color: #03050780;
+    color: var(--bg-dark)80;
 }
 
 .btn-submit-circle {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #030507;
+    background-color: var(--bg-dark);
     border: none;
     display: flex;
     justify-content: center;
@@ -754,20 +731,20 @@ h2{
     height: 12vw; /* Altura máxima baseada na bola gigante das laterais */
 
     /* A MÁGICA 2: 
-       Desenhamos as bolas com a cor PRETA (#030507) 
+       Desenhamos as bolas com a cor PRETA (var(--bg-dark)) 
        e ancoramos elas no bottom (100%), fazendo com que cresçam para cima! */
     background-image:
         /* Lateral Esquerda (Bolas maiores) */
-        radial-gradient(circle at 1% 130%, #030507 14vw, transparent calc(14vw + 1px)),
-        radial-gradient(circle at 19% 160%, #030507 14vw, transparent calc(14vw + 1px)),
-        radial-gradient(circle at 35% 140%, #030507 10vw, transparent calc(10vw + 1px)),
+        radial-gradient(circle at 1% 130%, var(--bg-dark) 14vw, transparent calc(14vw + 1px)),
+        radial-gradient(circle at 19% 160%, var(--bg-dark) 14vw, transparent calc(14vw + 1px)),
+        radial-gradient(circle at 35% 140%, var(--bg-dark) 10vw, transparent calc(10vw + 1px)),
 
-        radial-gradient(circle at 50% 170%, #030507 14vw, transparent calc(14vw + 1px)),
+        radial-gradient(circle at 50% 170%, var(--bg-dark) 14vw, transparent calc(14vw + 1px)),
         
         /* Lateral Direita (Voltando a crescer) */
-        radial-gradient(circle at 67% 150%, #030507 14vw, transparent calc(14vw + 1px)),
-        radial-gradient(circle at 84% 140%, #030507 12vw, transparent calc(12vw + 1px)),
-        radial-gradient(circle at 102% 120%, #030507 14vw, transparent calc(14vw + 1px));
+        radial-gradient(circle at 67% 150%, var(--bg-dark) 14vw, transparent calc(14vw + 1px)),
+        radial-gradient(circle at 84% 140%, var(--bg-dark) 12vw, transparent calc(12vw + 1px)),
+        radial-gradient(circle at 102% 120%, var(--bg-dark) 14vw, transparent calc(14vw + 1px));
         
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -782,7 +759,7 @@ h2{
 .sec6 {
     position: relative;
     padding: 120px 1vw;
-    background-color: #030507; 
+    background-color: var(--bg-dark); 
     display: flex;
     justify-content: center;
     padding-bottom: 120px;
@@ -808,13 +785,13 @@ h2{
         p {
             font-size: 1.5vw;
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--texto-mutado);
         }
 
         em {
             font-style: italic;
             font-weight: 600;
-            color: #f8f8f8;
+            color: var(--texto-claro);
         }
     }
 
@@ -823,16 +800,16 @@ h2{
             justify-content: center;
             align-items: center;
             background-color: transparent;
-            border: 1px solid #f8f8f8;
-            color: #f8f8f8;
+            border: 1px solid var(--texto-claro);
+            color: var(--texto-claro);
             border-radius: 40px;
             padding: 8px 46px;
             cursor: pointer;
             transition: all 0.3s ease;
 
             &:hover {
-                background-color: #f8f8f8d5;
-                color: #030507;
+                background-color: var(--texto-claro)d5;
+                color: var(--bg-dark);
         }
     }   
 
@@ -842,16 +819,15 @@ h2{
     }
 
     .faq-item {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);        
         transition: background-color 0.4s ease, transform 0.4s ease;
 
         &.is-open {
-            background-color: #f8f8f8d5;  
+            /* background-color: var(--texto-claro);   */
             transform: scale(1.02);
-            color: #030507;
+            /* color: var(--bg-dark); */
 
-            span { color: #030507;
+            span {color: var(--texto-claro);
             }
                 
             .faq-icon { transform: rotate(-90deg );
@@ -860,8 +836,9 @@ h2{
 
         /* O seu código perfeito aqui: */
         &:not(.is-open):hover{
-            background-color: #f8f8f8aa; 
-            .faq-question span { color: #030507; }
+            background-color: var(--texto-claro); 
+
+            .faq-question span { color: var(--bg-dark);}
             transform: scale(1.02);
             
             .faq-icon {
@@ -869,7 +846,7 @@ h2{
                 filter: invert(0); 
             }
 
-            .faq-answer p { color: #030507; }
+            .faq-answer p { color: var(--bg-dark); }
         }
     }
         
@@ -883,21 +860,22 @@ h2{
         border: none;
         text-align: center;
         outline: none;
-        transition: background-image 0.4s ease; /* Transição suave do hover */
-        
-        span {
-            font-family: 'Montreal', sans-serif;
-            font-size: 2vw; 
-            font-weight: 400;
-            color: #f8f8f8;
-            transition: font-weight 0.3s ease, color 0.3s ease;
-        }
-        &:hover{
-            .faq-icon {
-                transform: rotate(-90deg); 
-            }
+        transition: background-image 0.4s ease; 
+
+    span {
+        font-family: 'Montreal', sans-serif;
+        font-size: 2vw; 
+        font-weight: 400;
+        color: var(--texto-claro);
+        transition: font-weight 0.3s ease, color 0.3s ease;
+    }
+
+    &:hover{
+        .faq-icon {
+            transform: rotate(-90deg); 
         }
     }
+}
 
     .faq-icon-wrapper {
         position: absolute; 
@@ -984,7 +962,7 @@ h2{
     .cta-card {
         background-color: rgba(65, 65, 65, 0.1); 
         backdrop-filter: blur(12px); /* Efeito de vidro premium da Apple */
-        border: #f8f8f834 1px solid; 
+        border: var(--texto-claro)34 1px solid; 
         padding: 60px 50px;
         border-radius: 30px;
         width: 100%;
@@ -1002,7 +980,7 @@ h2{
         h2 {
             font-family: 'Montreal', sans-serif;
             font-weight: 400;
-            color: #f8f8f8;
+            color: var(--texto-claro);
             letter-spacing: -1px;
         }
 
@@ -1010,7 +988,7 @@ h2{
             font-family: 'Poppins', sans-serif;
             font-size: 16px;
             font-weight: 500;
-            color: #f8f8f8;
+            color: var(--texto-claro);
             letter-spacing: 1.5px;
             display: inline-flex;
             align-items: center;
@@ -1040,7 +1018,7 @@ h2{
 .sec8{
     margin: 0;
     position: relative;
-    background-color: #030507;
+    background-color: var(--bg-dark);
     display: flex;
     justify-content: space-between; 
     padding: 0 1vw; 
@@ -1063,7 +1041,7 @@ h2{
 
         button{
             background-color: transparent;
-            border: 1px solid #f8f8f8;
+            border: 1px solid var(--texto-claro);
             border-radius: 40px;
             display: flex;
             justify-content: center;
@@ -1082,7 +1060,7 @@ h2{
         em {
             font-style: italic;
             font-weight: 600;
-            color: #f8f8f8;
+            color: var(--texto-claro);
         }
     }
 
@@ -1098,7 +1076,7 @@ h2{
 .sec9{
     margin: 0;
     position: relative;
-    background-color: #030507;
+    background-color: var(--bg-dark);
     display: flex;
     justify-content: space-between; 
     padding: 120px 1vw 1vh 1vw; 

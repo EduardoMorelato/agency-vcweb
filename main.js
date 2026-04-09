@@ -270,9 +270,6 @@ if (wordElement) {
 
 // Espera o HTML básico estar pronto
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. VÍDEO DA HERO (Sec1)
-    // Selecione a classe correta do seu vídeo da sec1 aqui
     const heroVideo = document.querySelector(".sec1 video"); 
     
     if (heroVideo) {
@@ -290,11 +287,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ctaVideo) {
         ScrollTrigger.create({
             trigger: ".sec7",
-            start: "top bottom", // Dispara assim que a sec7 espreita no fundo do ecrã
-            onEnter: () => ctaVideo.play(), // Dá o play quando entra na tela
-            onLeave: () => ctaVideo.pause(), // Pausa quando passa dela (rola para baixo)
-            onEnterBack: () => ctaVideo.play(), // Dá o play se rolar para cima de novo
-            onLeaveBack: () => ctaVideo.pause() // Pausa se voltar para a sec6
+            start: "top bottom", 
+            onEnter: () => ctaVideo.play(), 
+            onLeave: () => ctaVideo.pause(), 
+            onEnterBack: () => ctaVideo.play(), 
+            onLeaveBack: () => ctaVideo.pause() 
         });
     }
 });
