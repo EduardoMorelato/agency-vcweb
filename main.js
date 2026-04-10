@@ -12,6 +12,8 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 // SUAS ANIMAÇÕES ORIGINAIS (MANTIDAS)
 // ======================================================
 
+let alvo = window.innerWidth < 768 ? ".slice:nth-child(-n+4)" : ".slice";
+
 gsap.to(".slice", {
     scrollTrigger: {
         trigger: ".sec1",
