@@ -259,49 +259,27 @@
     </section>
 
     <!-- SEC5 -->
-    <section class="sec5">
+<section class="sec5">
       <div class="container">
         <div class="lead-capture">
-          <h2>Receive your free <em>Website</em> analysis?</h2>
+          <h2 id="form-title">Receive your free <em>Website</em> analysis?</h2>
 
           <form action="/submit-endpoint" method="post" class="analysis-form">
+            
             <div class="input-group">
               <label for="websiteUrl" class="sr-only">Website URL</label>
-              <input
-                type="text"
-                id="websiteUrl"
-                name="websiteUrl"
-                placeholder="Enter your website URL..."
-                required
-              />
+              <input type="text" id="websiteUrl" name="websiteUrl" placeholder="Enter your website URL..." required />
             </div>
+
             <div class="input-group">
               <label for="userEmail" class="sr-only">Email address</label>
-              <input
-                type="email"
-                id="userEmail"
-                name="userEmail"
-                placeholder="Enter your email..."
-                required
-              />
+              <input type="email" id="userEmail" name="userEmail" placeholder="Enter your email..." required />
             </div>
-            <button
-              type="submit"
-              class="btn-submit-circle"
-              aria-label="Request Analysis"
-            >
-              <img
-                src="/img/seta-direita.svg"
-                alt="Seta seta-direita"
-                aria-hidden="true"
-              />
+
+            <button type="submit" class="btn-submit-circle" aria-label="Request Analysis">
+              <img src="/img/seta-direita.svg" alt="Seta seta-direita" aria-hidden="true" />
             </button>
           </form>
-          <div class="success-message" style="display: none; opacity: 0">
-            <div class="success-icon">✓</div>
-            <h3>Request Received!</h3>
-            <p>Our team will analyze your site and contact you soon.</p>
-          </div>
         </div>
       </div>
       <div class="wave-dividr"></div>

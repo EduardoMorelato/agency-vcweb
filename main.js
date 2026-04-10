@@ -157,21 +157,29 @@ ScrollTrigger.create({
 });
 
 // ======================================================
-// ENVIO DE FORMULÁRIO COM ANIMAÇÃO PREMIUM
+// ENVIO DE FORMULÁRIO (EFEITO LASER SCAN AWWWARDS)
 // ======================================================
 const form = document.querySelector('.analysis-form');
-const successMsg = document.querySelector('.success-message');
 
-if (form && successMsg) {
+if (form) {
+    // 1. Preparar os SVGs de checkmark para o efeito de "desenhar à mão"
+    const checks = document.querySelectorAll('.check-laser path');
+    checks.forEach(path => {
+        const length = path.getTotalLength();
+        // Esconde a linha puxando-a para fora do percurso
+        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+    });
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const website = document.querySelector('#websiteUrl').value;
         const email = document.querySelector('#userEmail').value;
         const btn = form.querySelector('button');
+        const inputs = form.querySelectorAll('input');
 
-        // Feedback visual de carregamento
-        gsap.to(btn, { opacity: 0.5, scale: 0.9, duration: 0.2 });
+        // Efeito de "Pressão" no botão ao clicar
+        gsap.to(btn, { scale: 0.9, opacity: 0.7, duration: 0.2 });
         btn.disabled = true;
 
         const { error } = await _supabase
@@ -181,33 +189,54 @@ if (form && successMsg) {
         if (error) {
             console.error('Erro:', error);
             alert('Error sending request. Please try again.');
-            gsap.to(btn, { opacity: 1, scale: 1, duration: 0.2 });
+            gsap.to(btn, { scale: 1, opacity: 1, duration: 0.2 });
             btn.disabled = false;
         } else {
-            // A MÁGICA DA ANIMAÇÃO:
-            // 1. Esconde o formulário
-            gsap.to(form, { 
-                opacity: 0, 
-                y: -20, 
-                duration: 0.5, 
-                onComplete: () => {
-                    form.style.display = 'none';
-                    
-                    // 2. Mostra a mensagem de sucesso
-                    successMsg.style.display = 'block';
-                    gsap.fromTo(successMsg, 
-                        { opacity: 0, y: 30, scale: 0.9 },
-                        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.7)" }
-                    );
+            // A MÁGICA "HACKER" (TERMINAL EFFECT)
+            
+            // 1. Esvazia os campos e bloqueia a escrita
+            inputs.forEach(input => {
+                input.value = '';
+                input.disabled = true;
+                input.style.cursor = 'default';
+            });
 
-                    // 3. Anima o ícone de check separadamente
-                    gsap.from(".success-icon", {
-                        rotate: -45,
-                        scale: 0,
-                        duration: 1,
-                        delay: 0.3,
-                        ease: "elastic.out(1, 0.5)"
-                    });
+            // 2. O botão "evapora"
+            gsap.to(btn, { 
+                opacity: 0, 
+                scale: 0.5, 
+                duration: 0.4, 
+                ease: "back.in(1.7)",
+                onComplete: () => btn.style.display = 'none' 
+            });
+
+            // 3. Os placeholders mudam como um terminal seguro
+            setTimeout(() => {
+                document.querySelector('#websiteUrl').placeholder = "[ Data Encrypted ]";
+                document.querySelector('#userEmail').placeholder = "[ System Secured ]";
+                
+                // Um leve piscar de verde neon nos inputs para dar o efeito de terminal
+                gsap.fromTo(inputs, 
+                    { color: "rgb(38, 203, 186)" }, 
+                    { color: "#ffffff", duration: 1, stagger: 0.2 }
+                );
+            }, 300);
+
+            // 4. O título reescreve-se sozinho
+            const title = document.querySelector('#form-title');
+            gsap.to(title, {
+                opacity: 0,
+                duration: 0.3,
+                delay: 0.5,
+                onComplete: () => {
+                    // Novo texto de sucesso com a sua classe de itálico
+                    title.innerHTML = "Analysis <em>Engineered.</em><br/>We'll talk soon.";
+                    
+                    // Entra da esquerda para a direita simulando código a aparecer
+                    gsap.fromTo(title, 
+                        { opacity: 0, x: -30 }, 
+                        { opacity: 1, x: 0, duration: 0.8, ease: "power4.out" }
+                    );
                 }
             });
         }
