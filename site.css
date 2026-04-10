@@ -255,7 +255,7 @@ h2 {
   .sec1 .tituloCima, 
   .sec1 button {
     position: relative;
-    z-index: 2;
+    z-index: 3;
   }
 }
 
