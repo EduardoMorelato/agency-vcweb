@@ -241,18 +241,17 @@ h2 {
 @media (max-width: 768px) {
 
   .sec1 button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--texto-claro);
-    border: none;
-    color: var(--bg-dark);
-    gap: 14px;
-    border-radius: 40px;
-    padding: 6px 6px 6px 20px; /* Seu novo padding para mobile */
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }  
+    padding: 6px 6px 6px 20px;
+  } 
+  .sec1 video {
+    width: 100%;
+    height: 100svh; /* Garante que preenche toda a altura da tela */
+    object-fit: cover; /* Faz o zoom necessário sem distorcer o vídeo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
 
 /* ========================================= */
