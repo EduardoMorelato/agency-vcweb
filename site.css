@@ -61,6 +61,7 @@ a {
 body {
   background-color: var(--bg-dark);
   color: var(--texto-claro);
+  overflow-anchor: none;
 }
 
 /* ========================================= */
