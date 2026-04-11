@@ -147,7 +147,7 @@ header {
 }
 
 header img {
-  max-width: 10vw;
+  max-width: 120px;
   height: auto;
   opacity: 1 !important;
 }
@@ -287,28 +287,47 @@ h2 {
 /* ========================================= */
 /* WORD ROTATOR (EFEITO TYPEWRITER)          */
 /* ========================================= */
-.word-rotator {
+/* Estilo para Mobile-First */
+.rotator-wrapper {
   display: inline-block;
-  color: var(--texto-claro);
+  vertical-align: bottom; /* Alinha com o resto do texto */
+  overflow: hidden;       /* Esconde a palavra quando ela sai da caixa */
+  height: 1;          /* Altura de uma linha de texto */
+  position: relative;
+  min-width: 100%;       /* Evita que o título "dance" lateralmente */
+}
+
+.word-rotator {
+  font-family: "Montreal";
+  font-weight: bold;
+  display: block;
   font-style: italic;
-
-  /* A MÁGICA DO CURSOR A PISCAR */
-  border-right: 3px solid var(--texto-claro); /* A grossura e cor do cursor */
-  padding-right: 5px; /* Distância entre a última letra e o cursor */
-  animation: blinkCursor 0.7s infinite; /* Chama a animação abaixo */
+  color: var(--texto-claro);
+  transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s ease;
 }
 
-/* O Motor do Pisca-Pisca */
-@keyframes blinkCursor {
-  0%,
-  100% {
-    border-color: transparent;
-  }
-  50% {
-    border-color: var(--texto-claro);
+/* Estado de saída (quando a palavra sobe) */
+.word-rotator.slide-out {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Estado de entrada (quando a palavra vem de baixo) */
+.word-rotator.prepare-in {
+  transition: none; /* Desliga a transição para posicionar sem ver */
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Ajuste para Desktop (telas maiores) */
+@media (min-width: 1024px) {
+  .rotator-wrapper {
+    min-width: 300px; /* Espaço maior para palavras longas no PC */
   }
 }
 
+
+/* slices */
 .sec1::after {
   content: "";
   position: absolute;
