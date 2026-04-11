@@ -18,7 +18,9 @@ gsap.to(".slice", {
         end: "+=150%",
         scrub: 1,
         pin: true,
+        anticipatePin: 1,
     },
+    
     yPercent: 100,
     stagger: 0.1, 
     ease: "none"
