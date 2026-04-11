@@ -287,21 +287,42 @@ if (wordElement) {
 }
 
 // ======================================================
-// OTIMIZAÇÃO DE VÍDEOS
+// OTIMIZAÇÃO DE VÍDEOS (À PROVA DE iOS/SAFARI)
 // ======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
     const heroVideo = document.querySelector(".sec1 video"); 
     
     if (heroVideo) {
-        setTimeout(() => {
-            heroVideo.play().catch(e => console.log("Play bloqueado pelo navegador"));
-        }, 800); 
+        // 1. Força o mudo absoluto via JavaScript (O iPhone exige isto)
+        heroVideo.muted = true;
+        heroVideo.defaultMuted = true;
+        heroVideo.playsInline = true;
+
+        // 2. Tenta forçar o Play assim que a página carrega
+        let playPromise = heroVideo.play();
+
+        // 3. Se o navegador bloquear (o que é comum), nós tentamos de novo no primeiro toque na tela
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                console.log("Autoplay bloqueado. Aguardando interação do usuário.");
+                
+                // O primeiro toque em qualquer lugar da tela vai dar play no vídeo
+                document.body.addEventListener('touchstart', function playOnTouch() {
+                    heroVideo.play();
+                    document.body.removeEventListener('touchstart', playOnTouch);
+                }, { once: true });
+            });
+        }
     }
 
     const ctaVideo = document.querySelector(".sec7 video");
     
     if (ctaVideo) {
+        // Garante que o vídeo do CTA também não sofre bloqueios
+        ctaVideo.muted = true;
+        ctaVideo.playsInline = true;
+
         ScrollTrigger.create({
             trigger: ".sec7",
             start: "top bottom", 
