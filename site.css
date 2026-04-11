@@ -209,8 +209,8 @@ h2 {
     padding: 0 20px; /* Margem interna para o texto não colar na tela */
   }
 
-
 .btn-h {
+  margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -221,6 +221,10 @@ h2 {
     border-radius: 400px;
     padding: 6px 6px 6px 20px; /* Padding de mobile */
     cursor: pointer;
+
+    img{
+      width: 14px;
+    }
   }
 
   .sec1 video {
@@ -235,18 +239,17 @@ h2 {
   
   h1 {
     font-family: "Montreal", sans-serif;
-    font-size: clamp(32px, 3vw, 64px);
+    font-size: clamp(32px, 10vw, 64px);
     line-height: 1.1;
     text-wrap: balance;
-    margin-bottom: 10px;
   }
 
   .tituloCima {
     p {
-      font-size: 12px; /* Menor no celular */
-      letter-spacing: 3px;
+      font-size: clamp(12px, 1vw, 20px);
       color: var(--branco-opacidade);
       margin-bottom: 8px;
+      letter-spacing: 2px;
     }
 }
 
