@@ -285,30 +285,3 @@ if (wordElement) {
     }
     typeWriter();
 }
-
-// ======================================================
-// OTIMIZAÇÃO DE VÍDEOS
-// ======================================================
-
-document.addEventListener("DOMContentLoaded", () => {
-    const heroVideo = document.querySelector(".sec1 video"); 
-    
-    if (heroVideo) {
-        setTimeout(() => {
-            heroVideo.play().catch(e => console.log("Play bloqueado pelo navegador"));
-        }, 800); 
-    }
-
-    const ctaVideo = document.querySelector(".sec7 video");
-    
-    if (ctaVideo) {
-        ScrollTrigger.create({
-            trigger: ".sec7",
-            start: "top bottom", 
-            onEnter: () => ctaVideo.play(), 
-            onLeave: () => ctaVideo.pause(), 
-            onEnterBack: () => ctaVideo.play(), 
-            onLeaveBack: () => ctaVideo.pause() 
-        });
-    }
-});
