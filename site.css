@@ -147,7 +147,7 @@ header {
 }
 
 header img {
-  max-width: 120px;
+  max-width: 10vw;
   height: auto;
   opacity: 1 !important;
 }
@@ -156,7 +156,7 @@ header img {
   header img {
       max-width: 10vw;
       height: auto;
-      opacity: 1 !important; 
+    opacity: 1 !important; 
   }
 }
 
@@ -224,7 +224,6 @@ h2 {
   }
 }
 
-
 .btn-h {
   margin-top: 10px;
     display: flex;
@@ -239,7 +238,7 @@ h2 {
     cursor: pointer;
 
     img{
-      width: 14px;
+      width: 38px;
     }
   }
 
@@ -263,7 +262,7 @@ h2 {
 }
 
 /* ========================================= */
-/* AJUSTES PARA DESKTOP SEC1        */
+/* AJUSTES PARA DESKTOP (MIN-WIDTH)          */
 /* ========================================= */
 @media (min-width: 1024px) {
   .sec1 {
@@ -285,46 +284,30 @@ h2 {
   }
 }
 
-/* TEXTO ROTATOR */
-
-/* Estilo para Mobile-First */
-.rotator-wrapper {
-  display: inline-block;
-  vertical-align: bottom; /* Alinha com o resto do texto */
-  overflow: hidden;       /* Esconde a palavra quando ela sai da caixa */
-  height: 1.2em;          /* Altura de uma linha de texto */
-  position: relative;
-  min-width: 100%;       /* Evita que o título "dance" lateralmente */
-}
-
+/* ========================================= */
+/* WORD ROTATOR (EFEITO TYPEWRITER)          */
+/* ========================================= */
 .word-rotator {
-  display: block;
-  font-style: italic;
+  display: inline-block;
   color: var(--texto-claro);
-  transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s ease;
+  font-style: italic;
+
+  /* A MÁGICA DO CURSOR A PISCAR */
+  border-right: 3px solid var(--texto-claro); /* A grossura e cor do cursor */
+  padding-right: 5px; /* Distância entre a última letra e o cursor */
+  animation: blinkCursor 0.7s infinite; /* Chama a animação abaixo */
 }
 
-/* Estado de saída (quando a palavra sobe) */
-.word-rotator.slide-out {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-/* Estado de entrada (quando a palavra vem de baixo) */
-.word-rotator.prepare-in {
-  transition: none; /* Desliga a transição para posicionar sem ver */
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-/* Ajuste para Desktop (telas maiores) */
-@media (min-width: 1024px) {
-  .rotator-wrapper {
-    min-width: 300px; /* Espaço maior para palavras longas no PC */
+/* O Motor do Pisca-Pisca */
+@keyframes blinkCursor {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--texto-claro);
   }
 }
-
-/* slice */
 
 .sec1::after {
   content: "";
