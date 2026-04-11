@@ -235,7 +235,7 @@ h2 {
   
   h1 {
     font-family: "Montreal", sans-serif;
-    font-size: 32px; /* Tamanho confortável para mobile */
+    font-size: clamp(32px, 3vw, 64px);
     line-height: 1.1;
     text-wrap: balance;
     margin-bottom: 10px;
