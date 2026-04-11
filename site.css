@@ -127,7 +127,7 @@ button {
 }
 
 header {
-  top: 0;          /* ANCORAGEM: Garante que ele comece no topo */
+  top: 0;
   width: 100%;
   background-color: transparent;
   margin-bottom: 60px;
@@ -137,17 +137,16 @@ header {
   padding: 1.5vw 1.5vw;
   position: fixed;
   z-index: 999;
-  transition: background-color 0.3s ease;
-  will-change: transform;
-  transition: background-color 0.3s ease, opacity 0.5s ease, transform 0.4s ease;
-  will-change: opacity, transform;
+  transition: background-color 0.5s ease;
+  will-change: background-color;
 }
 
 /* Classe para esconder o header sem remover do código */
+/* No site.css */
 .header-hidden {
-  opacity: 0;
-  pointer-events: none; /* Impede cliques em links invisíveis */
-  transform: translateY(-10px); /* Leve subida para dar um charme */
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-20px) !important; /* Subida leve para efeito premium */
 }
 
 .header-dark {

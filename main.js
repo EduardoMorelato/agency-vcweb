@@ -92,39 +92,27 @@ if (faqItems.length > 0) {
 
 
 
-let headerTimeout;
+// ======================================================
+// HEADER BG TRANSIÇÃO SINCRONIZADA
+// ======================================================
+let bgTimer;
 const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
-    // 1. Sempre limpa o timer anterior ao mover a tela
-    clearTimeout(headerTimeout);
-    
-    // 2. Garante que o header apareça ao scrollar
-    header.classList.remove('header-hidden');
-
-    // 3. Lógica de cor (Dark Mode no Scroll)
     if (currentScroll > 50) {
+        clearTimeout(bgTimer);
         header.classList.add('header-dark');
     } else {
-        header.classList.remove('header-dark');
-        
-        // 4. Se estiver EXATAMENTE no topo, inicia a contagem para sumir
-        if (currentScroll <= 0) {
-            headerTimeout = setTimeout(() => {
-                header.classList.add('header-hidden');
-            }, 3000); // 3000ms = 3 segundos de espera
-        }
+        clearTimeout(bgTimer);
+        bgTimer = setTimeout(() => {
+            if (window.pageYOffset <= 50) {
+                header.classList.remove('header-dark');
+            }
+        }, 800);
     }
 });
-
-// Executa uma vez ao carregar a página para o caso de já iniciar no topo
-if (window.pageYOffset <= 0) {
-    headerTimeout = setTimeout(() => {
-        header.classList.add('header-hidden');
-    }, 3000);
-}
 
 // ======================================================
 // SEC4: INFINITE VELOCITY MARQUEE
