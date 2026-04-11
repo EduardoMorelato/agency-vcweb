@@ -8,9 +8,6 @@ const supabaseUrl = 'https://avrugsiyyokqatgbfzdj.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF2cnVnc2l5eW9rcWF0Z2JmemRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NTc3OTgsImV4cCI6MjA5MTMzMzc5OH0.4pactJMgREvurMkQAiGNOC9M4ybWkA76D-kuW0TNIb8';
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-// ======================================================
-// SUAS ANIMAÇÕES ORIGINAIS (MANTIDAS)
-// ======================================================
 
 let alvo = window.innerWidth < 768 ? ".slice:nth-child(-n+4)" : ".slice";
 
@@ -56,6 +53,8 @@ gsap.to(split.chars, {
     ease: "power1.inOut"
 });
 
+
+
 const faqItems = document.querySelectorAll('.js-faq-item');
 if (faqItems.length > 0) {
     const animConfig = {
@@ -91,30 +90,41 @@ if (faqItems.length > 0) {
     });
 }
 
-const header = document.querySelector("header");
-const headerAnim = gsap.from(header, { 
-  yPercent: -100,
-  paused: true,
-  duration: 0.3
-}).progress(1);
 
-ScrollTrigger.create({
-  start: "top top",
-  end: "max",
-  onUpdate: (self) => {
-    if (self.direction === -1) {
-      headerAnim.play(); 
-    } else {
-      headerAnim.reverse(); 
-    }
+
+let headerTimeout;
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    // 1. Sempre limpa o timer anterior ao mover a tela
+    clearTimeout(headerTimeout);
     
-    if (window.scrollY > 10) {
-        header.classList.add("header-dark");
+    // 2. Garante que o header apareça ao scrollar
+    header.classList.remove('header-hidden');
+
+    // 3. Lógica de cor (Dark Mode no Scroll)
+    if (currentScroll > 50) {
+        header.classList.add('header-dark');
     } else {
-        header.classList.remove("header-dark"); 
+        header.classList.remove('header-dark');
+        
+        // 4. Se estiver EXATAMENTE no topo, inicia a contagem para sumir
+        if (currentScroll <= 0) {
+            headerTimeout = setTimeout(() => {
+                header.classList.add('header-hidden');
+            }, 3000); // 3000ms = 3 segundos de espera
+        }
     }
-  }
 });
+
+// Executa uma vez ao carregar a página para o caso de já iniciar no topo
+if (window.pageYOffset <= 0) {
+    headerTimeout = setTimeout(() => {
+        header.classList.add('header-hidden');
+    }, 3000);
+}
 
 // ======================================================
 // SEC4: INFINITE VELOCITY MARQUEE
