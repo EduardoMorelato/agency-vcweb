@@ -249,39 +249,35 @@ if (form) {
 // HERO WORD FLIPPER
 // ======================================================
 
-const words = [ "websites", "logos", "banners", "ads", "products", "moments", "creatives", "systems", "experiences"];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const wordElement = document.querySelector(".word-rotator");
+// Aguarda o GSAP carregar
+document.addEventListener("DOMContentLoaded", () => {
+  const words = [ "websites", "logos", "banners", "ads", "products", "moments", "creatives", "systems", "experiences"];
+  const el = document.querySelector(".word-rotator");
+  let index = 0;
 
-if (wordElement) {
-    wordElement.innerText = ""; 
+  if (!el) return;
 
-    function typeWriter() {
-        const currentWord = words[wordIndex];
+  function rotate() {
+    // 1. Inicia a animação de saída (a palavra sobe)
+    el.classList.add("slide-out");
 
-        if (isDeleting) {
-            wordElement.innerText = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            wordElement.innerText = currentWord.substring(0, charIndex + 1);
-            charIndex++;
-        }
+    setTimeout(() => {
+      // 2. Troca o texto e posiciona a palavra em baixo (invisível)
+      index = (index + 1) % words.length;
+      el.innerText = words[index];
+      
+      el.classList.remove("slide-out");
+      el.classList.add("prepare-in");
 
-        let typeSpeed = isDeleting ? 40 : 100;
+      // 3. Força o navegador a reconhecer a nova posição
+      void el.offsetWidth;
 
-        if (!isDeleting && charIndex === currentWord.length) {
-            typeSpeed = 2000; 
-            isDeleting = true;
-        } 
-        else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length; 
-            typeSpeed = 500; 
-        }
+      // 4. Faz a nova palavra subir para o centro
+      el.classList.remove("prepare-in");
+    }, 300); // Tempo exato da transição do CSS
+  }
 
-        setTimeout(typeWriter, typeSpeed);
-    }
-    typeWriter();
-}
+  setInterval(rotate, 2500);
+});
+
+
