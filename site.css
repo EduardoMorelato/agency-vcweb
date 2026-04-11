@@ -229,7 +229,6 @@ h2 {
     font-family: "Montreal", sans-serif;
     font-size: clamp(32px, 10vw, 64px);
     line-height: 1.1;
-    text-wrap: balance;
   }
 }
 
@@ -435,6 +434,7 @@ h2 {
         line-height: 3.5vw;
         word-spacing: -10px;
         color: var(--bg-dark);
+        text-wrap: balance;
 
         em {
           font-style: italic;
