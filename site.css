@@ -209,6 +209,20 @@ h2 {
     padding: 0 20px; /* Margem interna para o texto não colar na tela */
   }
 
+
+.btn-h {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--texto-claro);
+    border: none;
+    color: var(--bg-dark);
+    gap: 14px;
+    border-radius: 400px;
+    padding: 6px 6px 6px 20px; /* Padding de mobile */
+    cursor: pointer;
+  }
+
   .sec1 video {
     position: absolute;
     top: 0;
@@ -233,19 +247,6 @@ h2 {
       letter-spacing: 3px;
       color: var(--branco-opacidade);
       margin-bottom: 8px;
-    }
-
-  button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--texto-claro);
-      border: none;
-      color: var(--bg-dark);
-      gap: 14px;
-      border-radius: 40px;
-      padding: 6px 6px 6px 20px; /* Padding de mobile */
-      cursor: pointer;
     }
 }
 
