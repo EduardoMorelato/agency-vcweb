@@ -296,9 +296,9 @@ h2 {
   display: inline-block;
   vertical-align: bottom;    /* Alinha com o resto do texto */
   overflow: hidden;         /* Esconde a palavra quando ela sai da caixa */
-  height: 1;               /* Altura de uma linha de texto */
+  /* height: 1;               Altura de uma linha de texto */
   position: relative;
-  min-width: 100%;       /* Evita que o título "dance" lateralmente */
+  min-width: 200px;       /* Evita que o título "dance" lateralmente */
 }
 
 .word-rotator {
