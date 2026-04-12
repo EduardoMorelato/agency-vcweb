@@ -192,6 +192,57 @@ header button {
   transition: all 0.3s ease;
 }
 
+/* ========================================= */
+/* MENU MOBILE-FIRST (PADRÃO)                */
+/* ========================================= */
+
+/* 1. Esconde a navegação e o botão 'Contact Us' no telemóvel */
+.desktop-nav,
+.header-cta {
+  display: none; 
+}
+
+/* 2. Estiliza o botão Hamburger para anular as regras globais de 'header button' */
+header .mobile-menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* As 3 linhas do Hamburger */
+.hamburger-line {
+  display: block;
+  width: 30px;
+  height: 2px;
+  background-color: var(--texto-claro);
+  transition: all 0.3s ease;
+}
+
+/* ========================================= */
+/* MENU DESKTOP (Telas maiores que 1024px)   */
+/* ========================================= */
+@media (min-width: 1024px) {
+  /* Esconde o botão Hamburger no PC */
+  header .mobile-menu-btn {
+    display: none; 
+  }
+
+  /* Revela a navegação e o CTA */
+  .desktop-nav {
+    display: block; 
+  }
+  
+  .header-cta {
+    display: flex; /* O seu botão Contact Us usa flex */
+  }
+}
+
 section {
   padding: 0px 1vw;
   width: 100%;

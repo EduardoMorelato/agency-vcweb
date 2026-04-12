@@ -43,18 +43,25 @@
 
   <body>
     <!-- header -->
-    <header>
-      <img src="/img/logo2x.webp" alt="Logotipo da empresa NorShift" />
-      <nav>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/work">Work</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button>Contact Us</button>
-    </header>
+<header>
+  <img src="/img/logo2x.webp" alt="Logotipo da empresa NorShift" />
+  
+  <button class="mobile-menu-btn" aria-label="Abrir menu">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+
+  <nav class="desktop-nav">
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="header-cta">Contact Us</button>
+</header>
 
     <section class="sec1">
       <video autoplay muted loop playsinline poster="/img/hero-poster.jpeg">
