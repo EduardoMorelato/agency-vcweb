@@ -1,0 +1,167 @@
+.sec1 {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alinhamento à esquerda no celular */
+    padding: 0 20px; /* Margem interna para o texto não colar na tela */
+
+    h1 {
+    font-family: "Montreal", sans-serif;
+    font-size: clamp(32px, 10vw, 64px);
+    line-height: 1.1;
+  }
+}
+
+.btn-h {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--texto-claro);
+    border: none;
+    color: var(--bg-dark);
+    gap: 14px;
+    border-radius: 400px;
+    padding: 6px 6px 6px 20px; /* Padding de mobile */
+    cursor: pointer;
+
+    img{
+      width: 38px;
+    }
+  }
+
+  .sec1 video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .tituloCima {
+    p {
+      font-size: clamp(12px, 1vw, 20px);
+      color: var(--branco-opacidade);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+}
+
+@media (min-width: 1024px) {
+  .sec1 {
+    padding: 0 5vw; /* Mais espaço nas laterais no PC */
+  }
+
+  .sec1 h1 {
+    font-size: 64px; /* Tamanho original que você gostou */
+    margin-bottom: 0;
+  }
+
+  .sec1 .tituloCima p {
+    font-size: 14px;
+    letter-spacing: 4px;
+  }
+
+  .sec1 button {
+    padding: 6px 6px 6px 24px; /* Botão um pouco mais largo */
+  }
+}
+
+
+/* ========================================= */
+/* WORD ROTATOR (EFEITO TYPEWRITER)          */
+/* ========================================= */
+.rotator-wrapper {
+  display: inline-block;
+  vertical-align: bottom;    /* Alinha com o resto do texto */
+  overflow: hidden;         /* Esconde a palavra quando ela sai da caixa */
+  /* height: 1;               Altura de uma linha de texto */
+  position: relative;
+  min-width: 200px;       /* Evita que o título "dance" lateralmente */
+}
+
+.word-rotator {
+  font-family: "Montreal";
+  font-weight: 600;
+  display: block;
+  font-style: italic;
+  color: var(--texto-claro);
+  transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s ease;
+}
+
+/* Estado de saída (quando a palavra sobe) */
+.word-rotator.slide-out {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Estado de entrada (quando a palavra vem de baixo) */
+.word-rotator.prepare-in {
+  transition: none; /* Desliga a transição para posicionar sem ver */
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Ajuste para Desktop (telas maiores) */
+@media (min-width: 1024px) {
+  .rotator-wrapper {
+    min-width: 300px; /* Espaço maior para palavras longas no PC */
+  }
+}
+
+
+/* slices */
+.sec1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(to top, var(--bg-dark) 1%, transparent 100%);
+  z-index: -1;
+}
+
+/* ========================================= */
+/* CONTAINER DAS FATIAS (MOBILE-FIRST)       */
+/* ========================================= */
+.slices-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110vh;
+  display: flex;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Estilo Base: Celular (Apenas 4 slices visíveis) */
+.slice {
+  flex: 1; /* Faz as 4 fatias dividirem o espaço igualmente */
+  height: 100%;
+  background-color: var(--bg-dark);
+  transform: translateY(-100%);
+  border-radius: 0px 0px 6vh 0px;
+  z-index: 1;
+}
+
+/* ESCONDE da 5ª fatia em diante por padrão (Mobile) */
+.slice:nth-child(n+5) {
+  display: none;
+}
+
+/* ========================================= */
+/* AJUSTE PARA DESKTOP (MOSTRA AS 9 FATIAS)  */
+/* ========================================= */
+@media (min-width: 1024px) {
+  /* Volta a exibir todas as fatias no computador */
+  .slice:nth-child(n+5) {
+    display: block;
+  }
+
+}

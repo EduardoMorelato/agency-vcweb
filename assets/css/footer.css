@@ -1,0 +1,34 @@
+/* footer */
+
+.sec9 {
+  margin: 0;
+  position: relative;
+  background-color: var(--bg-dark);
+  display: flex;
+  justify-content: space-between;
+  padding: 120px 1vw 1vh 1vw;
+  max-width: 100%;
+  min-height: 22vh;
+
+  p {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .footer-social {
+    margin: 10x;
+  }
+
+  img {
+    max-width: 30px;
+  }
+
+  .facebook {
+    max-height: 30px;
+  }
+
+  .linkdlin {
+    max-width: 25px;
+    padding-bottom: 5px;
+  }
+}

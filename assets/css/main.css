@@ -1,0 +1,6 @@
+/* assets/css/main.css */
+@import url('./variables.css');
+@import url('./header.css');
+@import url('./hero.css');
+@import url('./sections.css');
+@import url('./footer.css');
