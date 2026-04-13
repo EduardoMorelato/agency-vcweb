@@ -290,6 +290,27 @@ document.addEventListener("DOMContentLoaded", () => {
     initAnimations();
     initForms();
 
+    // ======================================================
+    // 2. LÓGICA DO MENU MOBILE
+    // ======================================================
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const menuOverlay = document.querySelector('.mobile-menu-overlay');
+
+    if (menuBtn && menuOverlay) {
+        menuBtn.addEventListener('click', () => {
+            // Liga/Desliga as classes de animação
+            menuBtn.classList.toggle('is-active');
+            menuOverlay.classList.toggle('is-open');
+
+            // Evita que o utilizador faça scroll no site enquanto o menu está aberto
+            if (menuOverlay.classList.contains('is-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
     // 1. Lógica do Header (mantive aqui por ser simples)
     let bgTimer;
     const header = document.querySelector('header');
