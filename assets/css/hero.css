@@ -147,7 +147,7 @@
   background-color: var(--bg-dark);
   transform: translateY(-100%);
   border-radius: 0px 0px 6vh 0px;
-  z-index: 1;
+  z-index: 1000;
 }
 
 /* ESCONDE da 5ª fatia em diante por padrão (Mobile) */

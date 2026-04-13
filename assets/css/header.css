@@ -174,7 +174,7 @@ header .mobile-menu-btn {
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 4px !important;
+  gap: var(--btn-gap, 4px) !important; /* Espaço entre pílula e bolinha */
   background: transparent;
   border: none;
   cursor: pointer;
@@ -190,7 +190,7 @@ header .mobile-menu-btn {
   align-items: center;
   justify-content: center;
   height: 21px;
-  padding: 0 32px;
+  padding: 0 var(--btn-padding, 32px);
   border: 2px solid var(--texto-claro); 
   border-radius: 100px;
   overflow: hidden; /* Garante que o texto debaixo não apareça */
@@ -239,20 +239,24 @@ header .mobile-menu-btn {
 .arrow-out { transform: translate(0, 0); }
 .arrow-in, .icon-close-in { transform: translate(-150%, 150%); }
 
+
 /* ========================================= */
 /* COMPORTAMENTO PARA BOTÕES DO CORPO (SETA) */
 /* ========================================= */
 
-.premium-btn:not(.mobile-menu-btn):hover .btn-text-mask,
+/* 1. Apenas a bolinha acende no hover, o fundo do texto continua transparente */
 .premium-btn:not(.mobile-menu-btn):hover .btn-icon-mask {
-  /* background-color: var(--texto-claro); */
+  background-color: var(--texto-claro);
 }
 
-.premium-btn:not(.mobile-menu-btn):hover .btn-text-default { transform: translateY(-150%); }
-.premium-btn:not(.mobile-menu-btn):hover .btn-text-hover { transform: translateY(0); }
-
-.premium-btn:not(.mobile-menu-btn):hover .arrow-out { transform: translate(150%, -150%); }
-.premium-btn:not(.mobile-menu-btn):hover .arrow-in { transform: translate(0, 0); filter: invert(1); }
+/* 2. Seta rolando na diagonal (sai uma, entra a outra) */
+.premium-btn:not(.mobile-menu-btn):hover .arrow-out { 
+  transform: translate(150%, -150%); 
+}
+.premium-btn:not(.mobile-menu-btn):hover .arrow-in { 
+  transform: translate(0, 0); 
+  filter: invert(1); /* Seta fica escura para aparecer no fundo branco */
+}
 
 /* ========================================= */
 /* COMPORTAMENTO EXCLUSIVO MENU (X)          */
