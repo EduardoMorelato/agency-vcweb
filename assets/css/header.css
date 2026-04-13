@@ -165,35 +165,102 @@ header .mobile-menu-btn {
   font-size: 18px;
 }
 
+
 /* ========================================= */
-/* ANIMAÇÃO DO HAMBURGER PARA "X"            */
+/* BOTÃO PREMIUM OPEN/CLOSE (MOBILE MENU)    */
 /* ========================================= */
-.mobile-menu-btn {
-  z-index: 1000; /* Garante que é clicável acima de tudo */
+
+.premium-btn {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+/* --- MÁSCARA DA PÍLULA DE TEXTO --- */
+.btn-text-mask {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 28px;      /* Deixa o botão "comprido" (pílula) */
+  border: 1px solid rgba(255, 255, 255, 0.4); 
+  border-radius: 100px;
+  overflow: hidden;
+  min-width: 100px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* As linhas recebem transição para se moverem suavemente */
-.hamburger-line {
-  transition: all 0.3s ease;
+.btn-text-default, 
+.btn-text-hover {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+  font-size: 14px; 
+  font-weight: 500;
+  text-transform: lowercase;
+  white-space: nowrap;
+  position: absolute;
+  align-content:center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
 }
 
-/* Quando clicado (JS adiciona .is-active) */
-.mobile-menu-btn.is-active .hamburger-line:nth-child(1) {
-  transform: translateY(8px) rotate(45deg); /* Linha de cima desce e roda */
+.btn-text-default { transform: translateY(0); color: var(--texto-claro); }
+.btn-text-hover { transform: translateY(150%); color: var(--bg-dark); }
+
+/* --- MÁSCARA DA BOLINHA DO ÍCONE --- */
+.btn-icon-mask {
+  width: 28px;          /* Altura e largura corrigidas para 42px (Círculo perfeito) */
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;       /* A MÁGICA: Impede que a bolinha seja esmagada */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mobile-menu-btn.is-active .hamburger-line:nth-child(2) {
-  opacity: 0; /* Linha do meio desaparece */
+.btn-icon-mask img {
+  width: 14px;
+  position: absolute;
+  filter: invert(0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
-.mobile-menu-btn.is-active .hamburger-line:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg); /* Linha de baixo sobe e roda */
+/* Posições Iniciais das Setas */
+.arrow-out { transform: translate(0, 0); }
+.arrow-in { transform: translate(-150%, 150%); }
+
+/* ========================================= */
+/* ESTADO ATIVO (MENU ABERTO)                */
+/* ========================================= */
+
+/* O botão todo "acende" em branco quando aberto */
+.mobile-menu-btn.is-active .btn-text-mask,
+.mobile-menu-btn.is-active .btn-icon-mask {
+  background-color: var(--texto-claro);
+  border-color: var(--texto-claro);
 }
 
-/* Garante que o menu de telemóvel nunca aparece no PC */
-@media (min-width: 1024px) {
-  .mobile-menu-overlay {
-    display: none !important;
-  }
+/* Troca de texto: OPEN -> CLOSE */
+.mobile-menu-btn.is-active .btn-text-default { transform: translateY(-150%); }
+.mobile-menu-btn.is-active .btn-text-hover { transform: translateY(0); }
+
+/* Rotação e Troca da Seta */
+.mobile-menu-btn.is-active .arrow-out { 
+  transform: translate(150%, -150%) rotate(0deg); 
+}
+.mobile-menu-btn.is-active .arrow-in { 
+  transform: translate(0, 0) rotate(0deg); 
+  filter: invert(1); 
 }

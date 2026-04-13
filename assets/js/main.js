@@ -290,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initAnimations();
     initForms();
 
+
     // ======================================================
     // 2. LÓGICA DO MENU MOBILE
     // ======================================================
