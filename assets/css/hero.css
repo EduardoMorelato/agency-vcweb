@@ -14,6 +14,10 @@
   }
 }
 
+.premium-btn{
+  margin-top: 14px;
+}
+
 .btn-h {
     margin-top: 14px;
     display: flex;
@@ -81,7 +85,7 @@
   overflow: hidden;         /* Esconde a palavra quando ela sai da caixa */
   /* height: 1;               Altura de uma linha de texto */
   position: relative;
-  min-width: 200px;       /* Evita que o título "dance" lateralmente */
+  min-width: 250px;       /* Evita que o título "dance" lateralmente */
 }
 
 .word-rotator {
