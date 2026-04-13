@@ -218,7 +218,6 @@ header .mobile-menu-btn {
   font-size: 18px;
 }
 
-
 /* ========================================= */
 /* BOTÃO PREMIUM OPEN/CLOSE (MOBILE MENU)    */
 /* ========================================= */
@@ -266,7 +265,7 @@ header .mobile-menu-btn {
 }
 
 .btn-text-default { transform: translateY(0); color: var(--texto-claro); }
-.btn-text-hover { transform: translateY(150%); color: var(--bg-dark); }
+.btn-text-hover { transform: translateY(-150%); color: var(--bg-dark); }
 
 /* --- MÁSCARA DA BOLINHA DO ÍCONE --- */
 .btn-icon-mask {
@@ -292,7 +291,7 @@ header .mobile-menu-btn {
 
 /* Posições Iniciais das Setas */
 .arrow-out { transform: translate(0, 0); }
-.arrow-in { transform: translate(-150%, 150%); }
+.arrow-in { transform: translate(-150%, -150%); }
 
 /* ========================================= */
 /* ESTADO ATIVO (MENU ABERTO)                */
@@ -311,7 +310,7 @@ header .mobile-menu-btn {
 
 /* Rotação e Troca da Seta */
 .mobile-menu-btn.is-active .arrow-out { 
-  transform: translate(150%, -150%) rotate(0deg); 
+  transform: translate(-150%, -150%) rotate(0deg); 
 }
 .mobile-menu-btn.is-active .arrow-in { 
   transform: translate(0, 0) rotate(0deg); 
