@@ -6,7 +6,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5vw 1.5vw;
+  padding: 1.5vw 2vw;
   position: fixed;
   z-index: 999;
   transition: background-color 0.5s ease;
@@ -165,61 +165,8 @@ header .mobile-menu-btn {
   font-size: 18px;
 }
 
-
 /* ========================================= */
-/* OVERLAY MENU (TELA CHEIA NO MOBILE)       */
-/* ========================================= */
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh; /* 100dvh ignora a barra do navegador no telemóvel */
-  background-color: var(--bg-dark);
-  z-index: 998; /* Fica abaixo do Header (999) para não tapar o Logo e o Botão */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  
-  /* Animação Premium: Começa fora da tela (em cima) */
-  transform: translateY(-100%);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Quando o JS adiciona esta classe, o menu desce */
-.mobile-menu-overlay.is-open {
-  transform: translateY(0);
-}
-
-/* Reset da lista para tirar as bolinhas padrão */
-.mobile-nav ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.mobile-nav a {
-  font-family: "Montreal", sans-serif;
-  font-size: 32px;
-  color: var(--texto-claro);
-  text-transform: uppercase;
-}
-
-.header-cta-mobile {
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--texto-claro);
-  border-radius: 40px;
-  padding: 12px 32px;
-  font-size: 18px;
-}
-
-/* ========================================= */
-/* BOTÃO PREMIUM OPEN/CLOSE (MOBILE MENU)    */
+/* BOTÃO PREMIUM (SEGUINDO SUAS EDIÇÕES)     */
 /* ========================================= */
 
 .premium-btn {
@@ -243,11 +190,10 @@ header .mobile-menu-btn {
   align-items: center;
   justify-content: center;
   height: 21px;
-  padding: 0 32px;      /* Deixa o botão "comprido" (pílula) */
-  border: 2px solid rgba(255, 255, 255, 1); 
+  padding: 0 32px;
+  border: 2px solid var(--texto-claro); 
   border-radius: 100px;
-  overflow: hidden;
- 
+  overflow: hidden; /* Garante que o texto debaixo não apareça */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -260,25 +206,25 @@ header .mobile-menu-btn {
   text-transform: uppercase;
   white-space: nowrap;
   position: absolute;
-  align-content:center;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
 }
 
 .btn-text-default { transform: translateY(0); color: var(--texto-claro); }
-.btn-text-hover { transform: translateY(-150%); color: var(--bg-dark); }
+/* O texto de hover (Close ou Let's Go) começa escondido abaixo */
+.btn-text-hover { transform: translateY(150%); color: var(--texto-claro); }
 
 /* --- MÁSCARA DA BOLINHA DO ÍCONE --- */
 .btn-icon-mask {
-  width: 21px;          /* Altura e largura corrigidas para 42px (Círculo perfeito) */
+  width: 21px;
   height: 21px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.8); 
+  border: 2px solid var(--texto-claro); 
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden;
-  flex-shrink: 0;       /* A MÁGICA: Impede que a bolinha seja esmagada */
+  overflow: hidden; /* Garante que a seta/X debaixo não apareça */
+  flex-shrink: 0;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -289,30 +235,46 @@ header .mobile-menu-btn {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
-/* Posições Iniciais das Setas */
+/* Posições Iniciais dos Ícones */
 .arrow-out { transform: translate(0, 0); }
-.arrow-in { transform: translate(-150%, -150%); }
+.arrow-in, .icon-close-in { transform: translate(-150%, 150%); }
 
 /* ========================================= */
-/* ESTADO ATIVO (MENU ABERTO)                */
+/* COMPORTAMENTO PARA BOTÕES DO CORPO (SETA) */
 /* ========================================= */
 
-/* O botão todo "acende" em branco quando aberto */
+.premium-btn:not(.mobile-menu-btn):hover .btn-text-mask,
+.premium-btn:not(.mobile-menu-btn):hover .btn-icon-mask {
+  /* background-color: var(--texto-claro); */
+}
+
+.premium-btn:not(.mobile-menu-btn):hover .btn-text-default { transform: translateY(-150%); }
+.premium-btn:not(.mobile-menu-btn):hover .btn-text-hover { transform: translateY(0); }
+
+.premium-btn:not(.mobile-menu-btn):hover .arrow-out { transform: translate(150%, -150%); }
+.premium-btn:not(.mobile-menu-btn):hover .arrow-in { transform: translate(0, 0); filter: invert(1); }
+
+/* ========================================= */
+/* COMPORTAMENTO EXCLUSIVO MENU (X)          */
+/* ========================================= */
+
+/* Esconde o botão de menu no Desktop */
+@media (min-width: 1024px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
+/* Ativação do Menu via JS (.is-active) */
 .mobile-menu-btn.is-active .btn-text-mask,
 .mobile-menu-btn.is-active .btn-icon-mask {
-  background-color: var(--texto-claro);
+  /* background-color: var(--texto-claro); */
   border-color: var(--texto-claro);
 }
 
-/* Troca de texto: OPEN -> CLOSE */
 .mobile-menu-btn.is-active .btn-text-default { transform: translateY(-150%); }
 .mobile-menu-btn.is-active .btn-text-hover { transform: translateY(0); }
 
-/* Rotação e Troca da Seta */
-.mobile-menu-btn.is-active .arrow-out { 
-  transform: translate(-150%, -150%) rotate(0deg); 
-}
-.mobile-menu-btn.is-active .arrow-in { 
-  transform: translate(0, 0) rotate(0deg); 
-  filter: invert(1); 
-}
+/* Seta sai na diagonal, X entra no centro */
+.mobile-menu-btn.is-active .arrow-out { transform: translate(150%, -150%); }
+.mobile-menu-btn.is-active .icon-close-in { transform: translate(0, 0); filter: invert(0); }
