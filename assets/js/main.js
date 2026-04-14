@@ -312,19 +312,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 1. Lógica do Header (mantive aqui por ser simples)
-    let bgTimer;
+// ======================================================
+    // 1. Lógica do Header (Prioridade: Esconder Primeiro)
+    // ======================================================
+    let lastScroll = 0;
     const header = document.querySelector('header');
+
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-        if (currentScroll > 50) {
-            clearTimeout(bgTimer);
+
+        // --- 1º PASSO: Lógica de Esconder (Ganha aos 10px) ---
+        // Se o utilizador rolar para baixo apenas 10px, o menu já começa a subir
+        if (currentScroll > lastScroll && currentScroll > 5) {
+            header.classList.add('header-hidden');
+        } else {
+            header.classList.remove('header-hidden');
+        }
+
+        if (currentScroll > 80) {
             header.classList.add('header-dark');
         } else {
-            clearTimeout(bgTimer);
-            bgTimer = setTimeout(() => {
-                if (window.pageYOffset <= 50) header.classList.remove('header-dark');
-            }, 800);
+            header.classList.remove('header-dark');
         }
+
+        lastScroll = currentScroll;
     });
-});
+ });   

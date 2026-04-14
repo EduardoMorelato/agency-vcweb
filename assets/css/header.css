@@ -9,7 +9,7 @@ header {
   padding: 1.5vw 2vw;
   position: fixed;
   z-index: 999;
-  transition: background-color 0.5s ease;
+  transition: all 0.5s ease;
   will-change: background-color;
 }
 
@@ -22,7 +22,6 @@ header {
 
 .header-dark {
   background-color: var(--bg-dark);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px);
 }
 
@@ -168,8 +167,9 @@ header button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 21px;
-  padding: 0 var(--btn-pad-x, 32px); /* Variável para você mudar o padding no HTML */
+  /* AQUI: Trocamos o 21px fixo pela variável de altura */
+  height: var(--btn-height, 21px);
+  padding: 0 var(--btn-pad-x, 32px);
   border: 2px solid var(--texto-claro); 
   border-radius: 100px;
   overflow: hidden;
@@ -177,8 +177,9 @@ header button {
 }
 
 .btn-icon-mask {
-  width: 21px;
-  height: 21px;
+  /* AQUI: A bolinha acompanha a variável de altura do texto */
+  width: var(--btn-height, 21px);
+  height: var(--btn-height, 21px);
   border-radius: 50%;
   border: 2px solid var(--texto-claro); 
   display: flex;
