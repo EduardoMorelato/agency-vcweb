@@ -24,7 +24,7 @@ button {
 }
 
 section {
-  padding: 0px 1vw;
+  padding: 0px 10px;
   width: 100%;
   z-index: 3;
   min-height: 100vh;

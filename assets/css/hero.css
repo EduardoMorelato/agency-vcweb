@@ -1,12 +1,11 @@
 .sec1 {
     position: relative;
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start; /* Alinhamento à esquerda no celular */
-    padding: 0 20px; /* Margem interna para o texto não colar na tela */
-
+    
     h1 {
     font-family: "Montreal", sans-serif;
     font-size: clamp(32px, 10vw, 64px);
@@ -43,7 +42,7 @@
 
 @media (min-width: 1024px) {
   .sec1 {
-    padding: 0 5vw; /* Mais espaço nas laterais no PC */
+    padding: 0 40px; /* Mais espaço nas laterais no PC */
   }
 
   .sec1 h1 {

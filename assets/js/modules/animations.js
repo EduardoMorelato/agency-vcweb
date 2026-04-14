@@ -4,13 +4,6 @@ export function initAnimations() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(SplitText);
 
-    // 1. SLICES
-    let alvo = window.innerWidth < 768 ? ".slice:nth-child(-n+4)" : ".slice";
-    gsap.to(".slice", {
-        scrollTrigger: { trigger: ".sec1", start: "top top", end: "+=150%", scrub: 1, pin: true, anticipatePin: 1 },
-        yPercent: 100, stagger: 0.1, ease: "none"
-    });
-
     // 2. SPLIT TEXT
     const split = new SplitText(".linha-manual", { type: "chars" });
     gsap.to(split.chars, {
