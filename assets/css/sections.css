@@ -16,12 +16,12 @@
   .linha-manual {
     font-family: "Montreal";
     color: #3a3a3a1f; /* A sua cor premium para o efeito de "acender" o texto */
-    font-size: clamp(46px, 4.5vw, 8.1rem);
+    font-size: clamp(38px, 4vw, 8.1rem);
     font-weight: 500;
     line-height: 1; /* Dica: 1.2 é mais responsivo do que 4vw para quebra de linhas */
     text-align: center;
     width: 100%;
-    margin: 0 auto; /* A MÁGICA: Distribui o espaço restante para os dois lados, centralizando perfeitamente! */
+    margin: 0 auto; 
   }
 }
 

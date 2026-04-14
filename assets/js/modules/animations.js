@@ -5,7 +5,7 @@ export function initAnimations() {
     gsap.registerPlugin(SplitText);
 
     // 2. SPLIT TEXT
-    const split = new SplitText(".linha-manual", { type: "chars" });
+    const split = new SplitText(".linha-manual", { type: "words, chars" });
     gsap.to(split.chars, {
         scrollTrigger: { trigger: ".sec2", start: "top top", end: "+=150%", scrub: 1 },
         keyframes: [{ color: "white", scale: 1.1, duration: 1 }, { color: "#f8f8f8d5", scale: 1.1, duration: .8 }],
