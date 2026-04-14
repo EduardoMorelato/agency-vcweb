@@ -1,5 +1,4 @@
 /* SEC2 */
-
 .sec2 {
   background-color: var(--bg-dark);
   position: sticky;
@@ -27,7 +26,6 @@
 }
 
 /* sec3 */
-
 .sec3 {
   position: relative;
   background-color: var(
