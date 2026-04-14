@@ -313,28 +313,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 // ======================================================
-    // 1. Lógica do Header (Prioridade: Esconder Primeiro)
+    // 1. Lógica do Header (Blindada contra pulos e bugs de subida)
     // ======================================================
-    let lastScroll = 0;
+    let lastScroll = window.scrollY || document.documentElement.scrollTop;
     const header = document.querySelector('header');
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+        const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-        // --- 1º PASSO: Lógica de Esconder (Ganha aos 10px) ---
-        // Se o utilizador rolar para baixo apenas 10px, o menu já começa a subir
-        if (currentScroll > lastScroll && currentScroll > 5) {
+        // --- A MÁGICA CONTRA O "PULINHO" NO TOPO ---
+        // Se estiver nos primeiros 10px do topo (ou no efeito elástico negativo do Mac/iOS)
+        // Ele força a limpeza de tudo e aborta o resto do código para não bugar.
+        if (currentScroll <= 10) {
+            header.classList.remove('header-hidden');
+            header.classList.remove('header-dark');
+            lastScroll = currentScroll;
+            return; 
+        }
+
+        // --- LÓGICA DE ESCONDER / MOSTRAR ---
+        if (currentScroll > lastScroll && currentScroll > 50) {
+            // A DESCER: Esconde o header
             header.classList.add('header-hidden');
-        } else {
+        } else if (currentScroll < lastScroll) {
+            // A SUBIR: O "else if" rigoroso obriga o header a voltar sempre!
             header.classList.remove('header-hidden');
         }
 
+        // --- LÓGICA DO FUNDO ESCURO ---
         if (currentScroll > 80) {
             header.classList.add('header-dark');
         } else {
             header.classList.remove('header-dark');
         }
 
-        lastScroll = currentScroll;
+        lastScroll = currentScroll; // Atualiza a memória
     });
  });   
