@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-// ======================================================
+    // ======================================================
     // 1. Lógica do Header (Blindada contra pulos e bugs de subida)
     // ======================================================
     let lastScroll = window.scrollY || document.documentElement.scrollTop;

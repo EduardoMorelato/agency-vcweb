@@ -14,10 +14,6 @@
   }
 }
 
-.premium-btn{
-  margin-top: 14px;
-}
-
 .btn-h {
     margin-top: 14px;
     display: flex;
@@ -34,16 +30,6 @@
     img{
       width: 38px;
     }
-  }
-
-  .sec1 video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
   }
 
   .tituloCima {
@@ -85,7 +71,7 @@
   overflow: hidden;         /* Esconde a palavra quando ela sai da caixa */
   /* height: 1;               Altura de uma linha de texto */
   position: relative;
-  min-width: 250px;       /* Evita que o título "dance" lateralmente */
+  min-width: 200px;       /* Evita que o título "dance" lateralmente */
 }
 
 .word-rotator {
@@ -151,7 +137,7 @@
   background-color: var(--bg-dark);
   transform: translateY(-100%);
   border-radius: 0px 0px 6vh 0px;
-  z-index: 1000;
+  z-index: 1;
 }
 
 /* ESCONDE da 5ª fatia em diante por padrão (Mobile) */
