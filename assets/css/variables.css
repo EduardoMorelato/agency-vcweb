@@ -53,7 +53,7 @@ h2 {
   --branco-opacidade: var(255, 255, 255, 0.7);
   --bg-dark: #131319;
   --texto-claro: #e9e3e3;
-  --texto-mutado: rgba(255, 255, 255, 0.5);
+  --texto-mutado: #aca7a7;
 
   --font-principal: "Montreal", sans-serif;
   --font-secundaria: "Poppins", sans-serif;
