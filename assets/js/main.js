@@ -290,10 +290,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initAnimations();
     initForms();
 
-
-    // ======================================================
-    // 2. LÓGICA DO MENU MOBILE
-    // ======================================================
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const menuOverlay = document.querySelector('.mobile-menu-overlay');
 

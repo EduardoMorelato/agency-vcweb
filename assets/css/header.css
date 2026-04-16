@@ -6,7 +6,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5vw 2vw;
+  padding: 1rem 1rem;
   position: fixed;
   z-index: 999;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -73,19 +73,6 @@ header button {
   display: none; 
 }
 
-/* 2. Estiliza o botão Hamburger para anular as regras globais de 'header button' */
-header .mobile-menu-btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  background-color: transparent;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
 /* ========================================= */
 /* MENU DESKTOP (Telas maiores que 1024px)   */
 /* ========================================= */
@@ -128,7 +115,7 @@ header .mobile-menu-btn {
 /* 1. Reset da Lista e Contador */
 .mobile-nav ul {
   list-style: none;
-  padding: 0;
+  padding-top: 3rem;
   counter-reset: menu-counter; /* Inicializa o contador */
 }
 
@@ -137,8 +124,9 @@ header .mobile-menu-btn {
   width: 100%;
   position: relative;
   border-bottom: 1px solid #646464; /* Borda em baixo */
-  padding: 20px 0;
+  padding: 12px 0;
   display: flex;
+  justify-content: center;
   align-items: center;
   counter-increment: menu-counter; /* Incrementa o número */
 }
@@ -165,12 +153,12 @@ header .mobile-menu-btn {
 /* 5. A Seta (mesmo estilo do botão) */
 .mobile-nav ul li::after {
   content: "";
-  width: 26px;
-  height: 24px;
+  width: 23px;
+  height: 20px;
   border-radius: 50%;
   border: 2px solid #000000;
   background-image: url('../img/seta-direita.svg');
-  background-size: 10px;
+  background-size: 8px;
   filter: invert(1);
   background-repeat: no-repeat;
   background-position: center;
@@ -181,19 +169,20 @@ header .mobile-menu-btn {
 
 /* 6. Redes Sociais e Botão Final */
 .mobile-menu-footer {
-  margin-top: 40px;
+  
+  width: 100%;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  width: 100%;
+  gap: 26px;
 }
 
 .mobile-socials {
-  max-width: 95%;
-  margin: 0 auto;
   display: flex;
+  max-width: 98%;
   flex-wrap: wrap;
-  /* gap: 20px; */
+  padding-left: .8rem;
+  /* gap: 42px; */
   justify-content: space-between;
 }
 
@@ -223,7 +212,7 @@ header .mobile-menu-btn {
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   gap: 10px;
 }
 
@@ -305,17 +294,37 @@ header .mobile-menu-btn {
   flex-shrink: 0;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .btn-icon-mask img {
   width: 9px;
   position: absolute;
   filter: invert(1);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  /* Atualizamos a transição para incluir opacity e filter */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.4s ease, 
+              opacity 0.4s ease !important;
 }
 
 /* Posições Iniciais dos Ícones */
-.arrow-out { transform: translate(0, 0); }
-.arrow-in, .icon-close-in { transform: translate(-150%, 150%); }
+.arrow-out { 
+  transform: translate(0, 0) rotate(0deg); 
+  opacity: 1; 
+  filter: invert(1);
+}
+
+
+/* O "X" escondido, encolhido, girado e com blur */
+.icon-close-in { 
+  transform: translate(0, 0) scale(0.2) rotate(-180deg); 
+  opacity: 0; 
+  filter: invert(1) blur(8px); 
+  pointer-events: none; 
+  
+  /* MÁGICA DA VOLTA: Ao fechar o menu, a opacidade zera em apenas 0.2s! */
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.2s ease, 
+              filter 0.2s ease !important;
+}
+
 
 /* ========================================= */
 /* COMPORTAMENTO PARA BOTÕES DO CORPO (SETA) */
@@ -324,6 +333,7 @@ header .mobile-menu-btn {
 .premium-btn:not(.mobile-menu-btn):hover .btn-text-mask,
 .premium-btn:not(.mobile-menu-btn):hover .btn-icon-mask {
   /* background-color: var(--texto-claro); */
+  
 }
 
 .premium-btn:not(.mobile-menu-btn):hover .btn-text-default { transform: translateY(-150%); }
@@ -343,15 +353,23 @@ header .mobile-menu-btn {
   }
 }
 
-/* Ativação do Menu via JS (.is-active) */
-.mobile-menu-btn.is-active .btn-text-mask,
-.mobile-menu-btn.is-active .btn-icon-mask {
-
+.mobile-menu-btn.is-active .btn-text-default {
+   transform: translateY(-150%); 
 }
 
-.mobile-menu-btn.is-active .btn-text-default { transform: translateY(-150%); }
-.mobile-menu-btn.is-active .btn-text-hover { transform: translateY(0); }
+.mobile-menu-btn.is-active .btn-text-hover { 
+  transform: translateY(0);
+}
 
-/* Seta sai na diagonal, X entra no centro */
-.mobile-menu-btn.is-active .arrow-out { transform: translate(150%, -150%); }
-.mobile-menu-btn.is-active .icon-close-in { transform: translate(0, 0); filter: invert(1); }
+/* Seta sai na diagonal (cima/direita) e vai sumindo */
+.mobile-menu-btn.is-active .arrow-out { 
+  transform: translate(150%, -150%) rotate(45deg); 
+  opacity: 0; 
+}
+
+/* O "X" gira 180º de volta ao zero, cresce e foca perfeitamente no centro */
+.mobile-menu-btn.is-active .icon-close-in { 
+  transform: translate(0, 0) scale(1) rotate(0deg); 
+  opacity: 1; 
+  filter: invert(1) blur(0px); 
+}
