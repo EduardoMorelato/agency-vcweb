@@ -112,10 +112,15 @@ header button {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.mobile-nav ul li:first-child::before {
+  margin-left: 1px;
+  margin-right: 12px;
+}
+
 /* 1. Reset da Lista e Contador */
 .mobile-nav ul {
   list-style: none;
-  padding-top: 3rem;
+  padding-top: 3.8rem;
   counter-reset: menu-counter; /* Inicializa o contador */
 }
 
@@ -139,6 +144,11 @@ header button {
   color: #646464; /* Cor mais suave */
   margin-right: 6px;
   margin-bottom: -6px;
+  width: 20px;
+  min-width: 26px;
+  display: inline-block; 
+  text-align: left;
+  margin-right: 15px;
 }
 
 /* 4. O Link */
@@ -169,9 +179,9 @@ header button {
 
 /* 6. Redes Sociais e Botão Final */
 .mobile-menu-footer {
-  
+  margin-bottom: 0px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -187,19 +197,37 @@ header button {
 }
 
 .mobile-socials a {
-  font-family: "Poppins";
-  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--texto-claro);
 }
 
-/* Reutilizando seu estilo btn-premium */
-.mobile-menu-footer .btn-premium {
-  width: 100%;
-  justify-content: space-between;
-  padding: 15px 25px;
+/* 1. Força a caixa invisível a ocupar 100% do limite da tela (respeitando o padding) */
+.mobile-menu-footer .premium-btn {
+  gap: 8px !important;
+  width: 100% !important;
+  justify-content: flex-start !important; /* Quebra o bloqueio do centro */
+}
+
+/* 2. A pílula de texto funciona como uma mola e estica até ao fim */
+.mobile-menu-footer .premium-btn .btn-text-mask {
+  flex-grow: 1; /* O comando mágico que faz ela esticar e ocupar a tela toda */
+  width: auto;
+  height: 40px; /* Deixa o botão mais alto e premium no telemóvel */
+}
+
+/* 3. A bolinha acompanha a altura para não ficar desproporcional */
+.mobile-menu-footer .premium-btn .btn-icon-mask {
+  width: 40px;
+  height: 40px;
+}
+
+/* 4. Aumenta um pouco a seta para não ficar perdida na bolinha grande */
+.mobile-menu-footer .premium-btn .btn-icon-mask img {
+  width: 12px;
 }
 
 /* Quando o JS adiciona esta classe, o menu desce */
@@ -276,7 +304,13 @@ header button {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
 }
 
-.btn-text-default { transform: translateY(0); color: var(--texto-claro); }
+.btn-text-default {
+  font-size: 12px;
+  font-weight: 400;
+  transform: translateY(0);
+  color: var(--texto-claro);
+
+}
 /* O texto de hover (Close ou Let's Go) começa escondido abaixo */
 .btn-text-hover { transform: translateY(150%); color: var(--texto-claro); }
 
@@ -324,7 +358,6 @@ header button {
               opacity 0.2s ease, 
               filter 0.2s ease !important;
 }
-
 
 /* ========================================= */
 /* COMPORTAMENTO PARA BOTÕES DO CORPO (SETA) */
