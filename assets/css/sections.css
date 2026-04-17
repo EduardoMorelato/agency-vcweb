@@ -210,43 +210,47 @@
 }
 
 /* ========================================= */
-/* SEC4 - WHAT CLIENTS SAY (MARQUEE)         */
+/* SEC4 - MOBILE FIRST (PADRÃO)              */
 /* ========================================= */
 
 .sec4 {
   position: relative;
-  padding: 100px 0 50px 0;
+  padding: 60px 0; /* Menos respiro no mobile */
   overflow: hidden;
   background-color: var(--texto-claro);
-
-  .esquerda {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-
-    h2 {
-      font-weight: 400;
-      color: var(--texto-claro);
-    }
-  }
 }
 
+/* O CARD PRETO GIGANTE */
 .card-master {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Empilha o texto e a esteira */
   align-items: center;
-  height: 90vh;
-  gap: 6vw;
-  margin: 0 1.5vw;
+  height: 85vh; /* Ocupa quase toda a tela, perfeito para o scroll da esteira */
+  gap: 40px;
+  margin: 0 1rem; /* Respeita a margem padrão do mobile */
   background-color: var(--bg-dark);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 40px;
-  padding: 60px;
-  box-shadow:
-    0 40px 80px rgba(0, 0, 0, 0.15),
-    0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 24px; /* Bordas um pouco mais fechadas no mobile */
+  padding: 40px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.sec4 .esquerda {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza no mobile */
+  text-align: center;
+  gap: 10px;
+
+  h2 {
+    text-wrap: balance;
+    line-height: 35px;
+    font-weight: 400;
+    color: var(--texto-claro);
+    font-size: clamp(2rem, 8vw, 3rem); /* Letra fluida, não esmaga no mobile */
+  }
 }
 
 .sec4 .esquerda em {
@@ -254,67 +258,51 @@
   font-weight: 600;
 }
 
+/* A CAIXA ONDE A ESTEIRA ROLA */
 .sec4 .direita {
-  width: 60%;
-  height: 100%;
+  width: 100%;
+  height: 100%; /* Preenche o resto do card-master */
   display: flex;
-  gap: 24px;
+  gap: 20px;
   overflow: hidden;
   align-items: flex-start;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    var(--bg-dark) 10%,
-    var(--bg-dark) 90%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    var(--bg-dark) 10%,
-    var(--bg-dark) 90%,
-    transparent
-  );
-  padding: 0 15px;
-  margin: 0 -15px;
+  /* A máscara premium de fade-out */
+  mask-image: linear-gradient(to bottom, transparent, var(--bg-dark) 10%, var(--bg-dark) 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, var(--bg-dark) 10%, var(--bg-dark) 90%, transparent);
 }
 
-/* AS DUAS ESTEIRAS */
+/* A ESTEIRA (1 COLUNA NO MOBILE) */
 .col-marquee {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  width: 50%;
+  gap: 16px;
+  width: 100%; /* Ocupa 100% do espaço, matando o esmagamento */
   height: max-content;
-  padding-bottom: 24px; /* AJUSTADO PARA 24px PARA MATAR O "PULINHO" */
+  padding-bottom: 16px; 
   will-change: transform;
 }
 
-/* Intercala a segunda coluna, começando mais de cima */
+/* O Segredo: Escondemos a coluna 2 no mobile para focar na leitura */
 .col-2 {
-  transform: translateY(-20%);
+  display: none; 
 }
 
-/* 2. O Card Base (Transição mais suave) */
+/* O CARD INDIVIDUAL DE DEPOIMENTO */
 .sec4 .card {
   background-color: transparent;
   border: 1px solid rgb(38, 203, 186);
-  border-radius: 24px;
-  padding: 40px;
+  border-radius: 16px; 
+  padding: 24px; /* Padding menor no telemóvel */
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition:
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.6s ease,
-    box-shadow 0.6s ease,
-    background-color 0.6s ease;
+  gap: 12px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, box-shadow 0.6s ease, background-color 0.6s ease;
   will-change: transform, opacity;
 }
 
 .sec4 .card h3 {
   font-family: "Poppins", sans-serif;
-  font-size: 1.2vw;
+  font-size: 16px; /* Letra legível no mobile (tira o vw) */
   font-weight: 400;
   line-height: 1.5;
   color: var(--branco-opacidade);
@@ -330,22 +318,71 @@
   font-weight: 600;
 }
 
-/* ======================================================= */
-/* EFEITO SPOTLIGHT CORRIGIDO                              */
-/* ======================================================= */
 
-.sec4 .direita:hover .card {
-  opacity: 0.25; /* Ficam bem mais opacos/apagados */
-  transform: scale(0.95); /* Encolhem para trás */
-}
+/* ========================================= */
+/* SEC4 - DESKTOP (Acima de 1024px)          */
+/* ========================================= */
 
-/* O cartão EXATO com o rato por cima acende e vem para a frente */
-.sec4 .direita .card:hover {
-  opacity: 1;
-  transform: scale(1.05); /* Cresce sem cortar por causa do padding novo */
-  background-color: rgba(38, 203, 186, 0.03);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  z-index: 10;
+@media (min-width: 1024px) {
+  .sec4 {
+    padding: 100px 0 50px 0;
+  }
+
+  .card-master {
+    flex-direction: row; /* Volta a ficar lado a lado */
+    height: 90vh;
+    gap: 6vw;
+    margin: 0 1.5vw;
+    padding: 60px;
+    border-radius: 40px;
+  }
+
+  .sec4 .esquerda {
+    width: 40%;
+    align-items: flex-start; /* Alinha à esquerda no Desktop */
+    text-align: left;
+  }
+
+  .sec4 .direita {
+    width: 60%;
+    padding: 0 15px;
+    margin: 0 -15px;
+  }
+
+  .col-marquee {
+    width: 50%; /* Volta a ter duas colunas */
+    gap: 24px;
+    padding-bottom: 24px;
+  }
+
+  /* Revela a segunda coluna e aplica o desnível zigue-zague */
+  .col-2 {
+    display: flex; 
+    transform: translateY(-20%);
+  }
+
+  .sec4 .card {
+    padding: 40px;
+    border-radius: 24px;
+  }
+
+  .sec4 .card h3 {
+    font-size: 1.2vw; /* Volta ao tamanho dinâmico para telas gigantes */
+  }
+
+  /* EFEITO SPOTLIGHT ORIGINAL DO DESKTOP */
+  .sec4 .direita:hover .card {
+    opacity: 0.25; 
+    transform: scale(0.95); 
+  }
+
+  .sec4 .direita .card:hover {
+    opacity: 1;
+    transform: scale(1.05); 
+    background-color: rgba(38, 203, 186, 0.03);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+  }
 }
 
 
@@ -365,6 +402,9 @@
   padding-top: calc(10px + 12vw);
 
   h2 {
+    text-wrap: balance;
+    font-size: clamp(38px, 4vw, 8.1rem);
+    line-height: 40px;
     color: var(--bg-dark);
     font-weight: 400;
   }
