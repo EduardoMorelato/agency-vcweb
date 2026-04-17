@@ -1,3 +1,55 @@
+/* ========================================= */
+/* ESTILIZAÇÃO DE CORES PARA FUNDO BRANCO    */
+/* ========================================= */
+
+/* 1. Borda escura para a pílula de texto E para a bolinha */
+.btn-body .btn-text-mask,
+.btn-body .btn-icon-mask {
+  border: 2px solid var(--bg-dark); 
+}
+
+/* 2. Cor do texto escuro */
+.btn-body .btn-text-default {
+  color: var(--bg-dark);
+}
+
+/* 3. Tira o branco das setas e deixa escuro */
+.btn-body .arrow-out,
+.btn-body .arrow-in {
+  filter: invert(0) !important; 
+}
+
+
+/* ========================================= */
+/* COMPORTAMENTO DE HOVER (ANIMAÇÃO)         */
+/* ========================================= */
+
+.btn-body .arrow-in {
+  transform: translate(-150%, 150%);
+  opacity: 1; 
+}
+
+/* Animação de Hover exclusiva para telas grandes (Desktop) */
+@media (min-width: 1024px) {
+  
+  /* A seta que está no centro voa para fora (Cima/Direita) */
+  .btn-body:hover .arrow-out { 
+    transform: translate(150%, -150%); 
+  }
+  
+  /* A seta reserva entra no centro */
+  .btn-body:hover .arrow-in { 
+    transform: translate(0, 0); 
+    /* Mantém a seta escura quando ela entra */
+    filter: invert(0) !important; 
+  }
+  
+  /* Trava o texto para garantir que ele não tente animar herdando regras antigas */
+  .btn-body:hover .btn-text-default {
+    transform: translateY(0) !important;
+  }
+}
+
 /* SEC2 */
 .sec2 {
   background-color: var(--bg-dark);
@@ -38,28 +90,30 @@
 }
 
 /* sec3 */
+/* ========================================= */
+/* SEC3 - MOBILE FIRST (PADRÃO)              */
+/* ========================================= */
 .sec3 {
   position: relative;
-  background-color: var(
-    --texto-claro
-  ); 
-  padding-top: 100px;
-  padding-bottom: 100px;
+  background-color: var(--texto-claro); 
+  padding-top: 60px; /* Reduzido para mobile */
+  padding-bottom: 60px; /* Reduzido para mobile */
 
   .work-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* No mobile, empilha o título e o botão */
+    align-items: flex-start;
+    gap: 24px;
     margin-bottom: 40px;
 
     .work-text {
-      max-width: 500px;
+      max-width: 100%;
 
       h2 {
         font-size: clamp(2.4rem, 4vw, 4rem);
         font-weight: 400;
-        line-height: 3.5vw;
-        word-spacing: -10px;
+        line-height: 1.1; /* A SOLUÇÃO: Mantém as linhas com respiro perfeito em qualquer tela */
+        word-spacing: -2px; /* Reduzido para não colar demais no mobile */
         color: var(--bg-dark);
         text-wrap: balance;
 
@@ -72,41 +126,31 @@
       p {
         margin-top: 14px;
         color: var(--bg-dark);
+        font-size: 16px;
       }
     }
   }
+
   .project-cards {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    max-width: 100%;
+    flex-direction: column; /* Empilha todas as imagens no mobile */
+    gap: 16px;
+    width: 100%;
     padding-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
 
     img {
+      width: 100% !important; /* No mobile, todas ocupam a tela toda */
+      height: 50vh !important; /* Altura confortável para fazer scroll */
       object-fit: cover;
       border-radius: 10px;
-      transition:
-        filter 0.4s ease,
-        transform 0.4s ease;
+      transition: filter 0.4s ease, transform 0.4s ease;
       cursor: pointer;
       filter: saturate(0);
 
       &:hover {
         filter: saturate(1);
       }
-    }
-
-    img:nth-child(1),
-    img:nth-child(4) {
-      width: 100%;
-      height: 80vh;
-    }
-
-    img:nth-child(2),
-    img:nth-child(3) {
-      width: calc(50% - 6px);
-      height: 70vh;
     }
   }
 
@@ -116,43 +160,52 @@
     padding-top: 20px;
   }
 
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg-dark);
-    border: 1px solid var(--bg-dark);
-    color: var(--texto-claro);
-    gap: 20px;
-    border-radius: 40px;
-    padding: 4px 8px 4px 40px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: var(--texto-claro);
-      color: var(--bg-dark);
-      scale: calc(1.04);
-    }
-  }
   .container {
-    padding-bottom: 100px;
+    padding-bottom: 60px;
   }
 }
 
+/* ========================================= */
+/* SEC3 - DESKTOP (Telas maiores que 1024px) */
+/* ========================================= */
 @media (min-width: 1024px) {
-  /* Esconde o botão Hamburger no PC */
-  header .mobile-menu-btn {
-    display: none; 
-  }
+  .sec3 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    
+    .work-header {
+      flex-direction: row; /* Volta a ficar lado a lado */
+      justify-content: space-between;
+      align-items: flex-end; /* Alinha o botão pela base do texto */
+      
+      .work-text h2 {
+        word-spacing: -5px; /* Volta o aperto agressivo de tipografia de agência */
+      }
+    }
 
-  /* Revela a navegação e o CTA */
-  .desktop-nav {
-    display: block; 
-  }
-  
-  .header-cta {
-    display: flex; /* O seu botão Contact Us usa flex */
+    .project-cards {
+      flex-direction: row; /* Volta a colocar lado a lado */
+      flex-wrap: wrap;
+      gap: 10px;
+
+      /* Retorna o grid assimétrico elegante */
+      img:nth-child(1),
+      img:nth-child(4) {
+        width: 100% !important;
+        height: 80vh !important;
+      }
+
+      img:nth-child(2),
+      img:nth-child(3) {
+        /* calc 50% menos metade do gap para caber perfeito lado a lado */
+        width: calc(50% - 5px) !important; 
+        height: 70vh !important;
+      }
+    }
+    
+    .container {
+      padding-bottom: 100px;
+    }
   }
 }
 
@@ -622,38 +675,20 @@
   }
 
   .faq-header {
-    h2 {
-      font-weight: 500;
-    }
-    p {
-      font-size: 1.5vw;
-      font-weight: 300;
-      color: var(--texto-mutado);
-    }
+      h2 {
+        font-weight: 500;
+      }
+      p {
+        font-size: 1.5vw;
+        font-weight: 300;
+        color: var(--texto-mutado);
+      }
 
-    em {
-      font-style: italic;
-      font-weight: 600;
-      color: var(--texto-claro);
-    }
-  }
-
-  .btn-see-all {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: 1px solid var(--texto-claro);
-    color: var(--texto-claro);
-    border-radius: 40px;
-    padding: 8px 46px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: var(--texto-claro) d5;
-      color: var(--bg-dark);
-    }
+      em {
+        font-style: italic;
+        font-weight: 600;
+        color: var(--texto-claro);
+      }
   }
 
   .faq-accordion {
