@@ -56,7 +56,7 @@
       max-width: 500px;
 
       h2 {
-        font-size: 4.5vw;
+        font-size: clamp(2.4rem, 4vw, 4rem);
         font-weight: 400;
         line-height: 3.5vw;
         word-spacing: -10px;
@@ -70,26 +70,8 @@
       }
 
       p {
-        margin-top: 16px;
+        margin-top: 14px;
         color: var(--bg-dark);
-      }
-    }
-
-    .btn-see-all {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: transparent;
-      border: 1px solid var(--bg-dark);
-      color: var(--bg-dark);
-      border-radius: 40px;
-      padding: 8px 46px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: var(--bg-dark);
-        color: var(--texto-claro);
       }
     }
   }
@@ -158,6 +140,22 @@
   }
 }
 
+@media (min-width: 1024px) {
+  /* Esconde o botão Hamburger no PC */
+  header .mobile-menu-btn {
+    display: none; 
+  }
+
+  /* Revela a navegação e o CTA */
+  .desktop-nav {
+    display: block; 
+  }
+  
+  .header-cta {
+    display: flex; /* O seu botão Contact Us usa flex */
+  }
+}
+
 /* ========================================= */
 /* SEC4 - WHAT CLIENTS SAY (MARQUEE)         */
 /* ========================================= */
@@ -178,26 +176,6 @@
     h2 {
       font-weight: 400;
       color: var(--texto-claro);
-    }
-
-    button {
-      font-family: "Montreal", sans-serif;
-      display: flex;
-      align-items: center;
-      background-color: transparent;
-      border: 1px solid var(--texto-claro);
-      color: var(--texto-claro);
-      gap: 20px;
-      border-radius: 40px;
-      padding: 12px 28px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: var(--texto-claro);
-        color: var(--bg-dark);
-        scale: calc(1.08);
-      }
     }
   }
 }
@@ -918,24 +896,6 @@
       font-weight: 400;
       max-width: 20vw;
       margin-right: -60px;
-    }
-
-    button {
-      background-color: transparent;
-      border: 1px solid var(--texto-claro);
-      border-radius: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transform: rotate(45deg);
-      margin-top: 6.6vw;
-      cursor: pointer;
-      transition: all 0.5s ease;
-
-      &:hover {
-        transform: scale(1.05);
-        rotate: calc(406deg);
-      }
     }
 
     em {

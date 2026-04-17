@@ -13,24 +13,6 @@
   }
 }
 
-.btn-h {
-    margin-top: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--texto-claro);
-    border: none;
-    color: var(--bg-dark);
-    gap: 14px;
-    border-radius: 400px;
-    padding: 6px 6px 6px 20px; /* Padding de mobile */
-    cursor: pointer;
-
-    img{
-      width: 38px;
-  }
-}
-
   .tituloCima {
     p {
       font-size: clamp(12px, 1vw, 20px);
@@ -70,7 +52,7 @@
   overflow: hidden;         /* Esconde a palavra quando ela sai da caixa */
   /* height: 1;               Altura de uma linha de texto */
   position: relative;
-  min-width: 200px;       /* Evita que o título "dance" lateralmente */
+  min-width: 420px;       /* Evita que o título "dance" lateralmente */
 }
 
 .word-rotator {
