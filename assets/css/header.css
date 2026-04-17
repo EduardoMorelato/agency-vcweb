@@ -96,7 +96,7 @@ header button {
 /* OVERLAY MENU (TELA CHEIA NO MOBILE)       */
 /* ========================================= */
 .mobile-menu-overlay {
-  padding: 0 1rem;
+  padding: 0 .6rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -138,17 +138,16 @@ header button {
 
 /* 3. O Número Estilizado (01, 02...) */
 .mobile-nav ul li::before {
-  content: "0" counter(menu-counter); /* Gera 01, 02... */
-  font-family: 'Montreal Medium', sans-serif; /* Use sua fonte Bold/Medium */
+  content: "0" counter(menu-counter);
+  font-family: 'Montreal Medium', sans-serif; 
   font-size: 28px;
-  color: #646464; /* Cor mais suave */
-  margin-right: 6px;
-  margin-bottom: -6px;
-  width: 20px;
-  min-width: 26px;
+  color: #646464; 
+  margin-right: 16px;
+  /* margin-bottom: -6px; */
+  width: 18px;
+  min-width: 22px;
   display: inline-block; 
   text-align: left;
-  margin-right: 15px;
 }
 
 /* 4. O Link */
@@ -179,11 +178,8 @@ header button {
 
 /* 6. Redes Sociais e Botão Final */
 .mobile-menu-footer {
-<<<<<<< HEAD
   margin-bottom: -10px;
-=======
   margin-bottom: 0px;
->>>>>>> f40b2717ef454cf752cb5749cfe7b958e26cdf23
   width: 100%;
   margin-top: 20px;
   display: flex;
@@ -193,9 +189,8 @@ header button {
 
 .mobile-socials {
   display: flex;
-  max-width: 98%;
+  max-width: 100%;
   flex-wrap: wrap;
-  padding-left: .8rem;
   /* gap: 42px; */
   justify-content: space-between;
 }
@@ -211,7 +206,7 @@ header button {
 
 /* 1. Força a caixa invisível a ocupar 100% do limite da tela (respeitando o padding) */
 .mobile-menu-footer .premium-btn {
-  gap: 8px !important;
+  gap: 6px !important;
   width: 100% !important;
   justify-content: flex-start !important; /* Quebra o bloqueio do centro */
 }
@@ -231,7 +226,7 @@ header button {
 
 /* 4. Aumenta um pouco a seta para não ficar perdida na bolinha grande */
 .mobile-menu-footer .premium-btn .btn-icon-mask img {
-  width: 12px;
+  width: 14px;
 }
 
 /* Quando o JS adiciona esta classe, o menu desce */
@@ -244,7 +239,6 @@ header button {
   list-style: none;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 10px;
 }
 
