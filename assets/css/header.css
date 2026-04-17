@@ -179,9 +179,13 @@ header button {
 
 /* 6. Redes Sociais e Botão Final */
 .mobile-menu-footer {
+<<<<<<< HEAD
   margin-bottom: -10px;
+=======
+  margin-bottom: 0px;
+>>>>>>> f40b2717ef454cf752cb5749cfe7b958e26cdf23
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 26px;
