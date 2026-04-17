@@ -51,7 +51,7 @@ h2 {
 :root {
   --ciano: rgb(38, 203, 186);
   --branco-opacidade: var(255, 255, 255, 0.7);
-  --bg-dark: #131319;
+  --bg-dark: #0d0d11;
   --texto-claro: #e9e3e3;
   --texto-mutado: #aca7a7;
 
