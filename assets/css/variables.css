@@ -14,15 +14,7 @@ body {
   background-color: var(--bg-dark);
   color: var(--texto-claro);
   overflow-anchor: none;
-}
-
-/* 2. Corta pela raiz qualquer elemento rebelde que tente vazar da tela */
-html, body {
-  width: 100%;
-  max-width: 100%;
   overflow-x: hidden !important; /* 'x' é o eixo horizontal */
-  margin: 0;
-  padding: 0;
 }
 
 body,
