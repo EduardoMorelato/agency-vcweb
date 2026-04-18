@@ -218,6 +218,7 @@
   padding: 60px 0; /* Menos respiro no mobile */
   overflow: hidden;
   background-color: var(--texto-claro);
+  overflow-x: hidden;
 }
 
 /* O CARD PRETO GIGANTE */
