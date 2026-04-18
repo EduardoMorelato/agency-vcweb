@@ -218,7 +218,6 @@
   padding: 60px 0; /* Menos respiro no mobile */
   overflow: hidden;
   background-color: var(--texto-claro);
-  overflow-x: hidden;
 }
 
 /* O CARD PRETO GIGANTE */
@@ -700,7 +699,6 @@
   display: flex;
   justify-content: center;
   padding-bottom: 120px;
-  overflow-x: hidden;
 
   .faq-container {
     width: 100%;
@@ -857,7 +855,6 @@
   align-items: center;
   padding: 1vw 5vw;
   margin: 0px 0 120px 0;
-  overflow-x: hidden;
 
   /* O VÍDEO DE FUNDO */
   .bglegal {
@@ -961,7 +958,6 @@
   padding: 0 1vw;
   max-width: 100%;
   min-height: 60vh;
-  overflow-x: hidden;
 
   .esquerda {
     display: flex;
