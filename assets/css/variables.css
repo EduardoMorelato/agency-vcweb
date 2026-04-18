@@ -13,7 +13,22 @@ a {
 body {
   background-color: var(--bg-dark);
   color: var(--texto-claro);
-  overflow-x: hidden !important;
+  overflow-anchor: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+/* 2. Corta o vazamento usando 'clip' em vez de 'hidden' */
+body, html {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: clip; /* A MÁGICA: O 'clip' corta o que sai da tela lateralmente, mas NÃO quebra o position: sticky! */
 }
 
 body,
